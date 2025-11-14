@@ -1,0 +1,1294 @@
+{
+    "exam_metadata": {
+        "layout": "exam",
+        "title": "Practice Exam 8",
+        "exam_id": 8
+    },
+    "questions": [
+        {
+            "question_number": 2,
+            "question_text": "A company wants to use Amazon Elastic Container Service (Amazon ECS) to run its containerized applications. For compliance reasons, the company wants to retain complete visibility and control over the underlying server cluster. Which Amazon ECS launch type will satisfy these requirements?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "A",
+            "correct_answer_text": "EC2 launch type.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "EC2 launch type."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Fargate launch type."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Lightsail launch type."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Lambda launch type."
+                }
+            ]
+        },
+        {
+            "question_number": 3,
+            "question_text": "You have multiple standalone AWS accounts and you want to decrease your AWS monthly charges. What should you do?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "B",
+            "correct_answer_text": "Add the accounts to an AWS Organization and use Consolidated Billing.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Try to remove unnecessary AWS accounts."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Add the accounts to an AWS Organization and use Consolidated Billing."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Track the AWS charges that are incurred by the member accounts."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Enable AWS tiered-pricing before provisioning resources."
+                }
+            ]
+        },
+        {
+            "question_number": 4,
+            "question_text": "You have been tasked with auditing the security of your VPC. As part of this process, you need to start by analyzing what inbound and outbound traffic is allowed on your EC2 instances. What two parts of the VPC do you need to check to accomplish this task?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "D",
+            "correct_answer_text": "Security Groups and Network ACLs.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Network ACLs and Traffic Manager."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Network ACLs and Subnets."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Security Groups and Internet Gateways."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Security Groups and Network ACLs."
+                }
+            ]
+        },
+        {
+            "question_number": 5,
+            "question_text": "What does the AWS \"Business\" support plan provide? (Choose TWO)",
+            "is_multiple_choice": true,
+            "correct_answer_keys": "A, D",
+            "correct_answer_text": "Access to the full set of Trusted Advisor checks. | AWS Support API.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Access to the full set of Trusted Advisor checks."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Support Concierge Service."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Less than 15 minutes response-time support if your business critical system goes down."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "AWS Support API."
+                },
+                {
+                    "option_key": "E",
+                    "option_text": "Proactive Technical Account Management."
+                }
+            ]
+        },
+        {
+            "question_number": 6,
+            "question_text": "You have just finished writing your application code. Which service can be used to automate the deployment and scaling of your application?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "B",
+            "correct_answer_text": "AWS Elastic Beanstalk.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Amazon Simple Storage Service."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "AWS Elastic Beanstalk."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "AWS CodeCommit."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Amazon Elastic File System."
+                }
+            ]
+        },
+        {
+            "question_number": 7,
+            "question_text": "Which statement is true in relation to security in AWS?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "B",
+            "correct_answer_text": "AWS customers are responsible for patching any database software running on Amazon EC2.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "AWS manages everything related to EC2 operating systems."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "AWS customers are responsible for patching any database software running on Amazon EC2."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Server side encryption is the responsibility of AWS."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "AWS is responsible for the security of your application."
+                }
+            ]
+        },
+        {
+            "question_number": 8,
+            "question_text": "Amazon EC2 instances are conceptually very similar to traditional servers. However, using Amazon EC2 server instances in the same manner as traditional hardware server instances is only a starting point. What are the main benefits of using the AWS EC2 instances instead of traditional servers? (Choose TWO)",
+            "is_multiple_choice": true,
+            "correct_answer_keys": "A, E",
+            "correct_answer_text": "Improves Fault-Tolerance. | Can be scaled manually in a shorter period of time.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Improves Fault-Tolerance."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Provides your business with a seamless remote accessibility."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Prevents unauthorized users from getting into your network."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Provides automatic data backups."
+                },
+                {
+                    "option_key": "E",
+                    "option_text": "Can be scaled manually in a shorter period of time."
+                }
+            ]
+        },
+        {
+            "question_number": 9,
+            "question_text": "Which statement is true regarding AWS pricing? (Choose TWO)",
+            "is_multiple_choice": true,
+            "correct_answer_keys": "A, C",
+            "correct_answer_text": "With the AWS pay-as-you-go pricing model, you don't have to pay any upfront fee. | You only pay for the individual services that you need with no long-term contracts.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "With the AWS pay-as-you-go pricing model, you don't have to pay any upfront fee."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "You have no responsibility for third-party software license costs."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "You only pay for the individual services that you need with no long-term contracts."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "For some services, you have to pay a startup fee in order to get the service running."
+                },
+                {
+                    "option_key": "E",
+                    "option_text": "There are no reservations on AWS, you only pay for what you use."
+                }
+            ]
+        },
+        {
+            "question_number": 10,
+            "question_text": "Which AWS service provides the EASIEST way to set up and manage a secure, well-architected, multi-account AWS environment?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "A",
+            "correct_answer_text": "AWS Control Tower.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "AWS Control Tower."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Amazon Macie."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "AWS Systems Manager Patch Manager."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "AWS Security Hub."
+                }
+            ]
+        },
+        {
+            "question_number": 11,
+            "question_text": "A company is running a large web application that needs to always be available. The application tends to slow down when CPU usage is greater than 60%. How can they track when CPU usage goes above 60% for any of the EC2 Instances in their account?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "C",
+            "correct_answer_text": "Use CloudWatch Alarms to monitor the CPU and alert when the CPU usage is >= 60%.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Use CloudFront to monitor the CPU usage."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Set the AWS Config CPU threshold to 60% to receive a notification when EC2 usage exceeds that value."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Use CloudWatch Alarms to monitor the CPU and alert when the CPU usage is >= 60%."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Use SNS to monitor the utilization of the server."
+                }
+            ]
+        },
+        {
+            "question_number": 12,
+            "question_text": "What is the recommended storage option when hosting an often-changing database on an Amazon EC2 instance?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "A",
+            "correct_answer_text": "Amazon EBS.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Amazon EBS."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Amazon RDS."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "You can't run a database inside an Amazon EC2 instance."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Amazon DynamoDB."
+                }
+            ]
+        },
+        {
+            "question_number": 13,
+            "question_text": "You are working as a site reliability engineer (SRE) in an AWS environment, which of the following services helps monitor your applications?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "A",
+            "correct_answer_text": "Amazon CloudWatch.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Amazon CloudWatch."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Amazon CloudSearch."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Amazon Elastic MapReduce."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Amazon CloudHSM."
+                }
+            ]
+        },
+        {
+            "question_number": 14,
+            "question_text": "What factors determine how you are charged when using AWS Lambda? (Choose TWO)",
+            "is_multiple_choice": true,
+            "correct_answer_keys": "B, E",
+            "correct_answer_text": "Number of requests to your functions. | Compute time consumed.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Storage consumed."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Number of requests to your functions."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Number of volumes."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Placement groups."
+                },
+                {
+                    "option_key": "E",
+                    "option_text": "Compute time consumed."
+                }
+            ]
+        },
+        {
+            "question_number": 15,
+            "question_text": "What are the main differences between an IAM user and an IAM role in AWS? (Choose TWO)",
+            "is_multiple_choice": true,
+            "correct_answer_keys": "A, B",
+            "correct_answer_text": "An IAM user is uniquely associated with only one person, however a role is intended to be assumable by anyone who needs it. | An IAM user has permanent credentials associated with it, however a role has temporary credentials associated with it.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "An IAM user is uniquely associated with only one person, however a role is intended to be assumable by anyone who needs it."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "An IAM user has permanent credentials associated with it, however a role has temporary credentials associated with it."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "IAM users are more cost effective than IAM roles."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "A role is uniquely associated with only one person, however an IAM user is intended to be assumable by anyone who needs it."
+                },
+                {
+                    "option_key": "E",
+                    "option_text": "An IAM user has temporary credentials associated with it, however a role has permanent credentials associated with it."
+                }
+            ]
+        },
+        {
+            "question_number": 16,
+            "question_text": "Which of the following actions may reduce Amazon EBS costs? (Choose TWO)",
+            "is_multiple_choice": true,
+            "correct_answer_keys": "C, D",
+            "correct_answer_text": "Deleting unnecessary snapshots. | Changing the type of the volume.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Deleting unused buckets."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Using reservations."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Deleting unnecessary snapshots."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Changing the type of the volume."
+                },
+                {
+                    "option_key": "E",
+                    "option_text": "Distributing requests to multiple volumes."
+                }
+            ]
+        },
+        {
+            "question_number": 17,
+            "question_text": "What does Amazon GuardDuty do to protect AWS accounts and workloads?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "B",
+            "correct_answer_text": "Continuously monitors AWS infrastructure and helps detect threats such as attacker reconnaissance or account compromise.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Notifies AWS customers about abuse events once they are reported."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Continuously monitors AWS infrastructure and helps detect threats such as attacker reconnaissance or account compromise."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Helps AWS customers identify the root cause of potential security issues."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Checks security groups for rules that allow unrestricted access to AWS. resources."
+                }
+            ]
+        },
+        {
+            "question_number": 18,
+            "question_text": "Which database service should you use if your application and data schema require \"joins\" or complex transactions?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "A",
+            "correct_answer_text": "Amazon RDS.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Amazon RDS."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "AWS Outposts."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Amazon DocumentDB."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Amazon DynamoDB."
+                }
+            ]
+        },
+        {
+            "question_number": 19,
+            "question_text": "Which of the following makes it easier for you to categorize, manage and filter your resources?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "D",
+            "correct_answer_text": "AWS Tagging.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Amazon CloudWatch."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "AWS Service Catalog."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "AWS Directory Service."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "AWS Tagging."
+                }
+            ]
+        },
+        {
+            "question_number": 20,
+            "question_text": "What should you consider when storing data in Amazon Glacier?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "C",
+            "correct_answer_text": "Amazon Glacier does not provide immediate retrieval of data.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Amazon Glacier only accepts data in a compressed format."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Glacier can only be used to store frequently accessed data and data archives."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Amazon Glacier does not provide immediate retrieval of data."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Attach Glacier to an EC2 Instance to be able to store data."
+                }
+            ]
+        },
+        {
+            "question_number": 21,
+            "question_text": "Engineers are wasting a lot of time and effort managing batch computing software in traditional data centers. Which of the following AWS services allows them to easily run thousands of batch computing jobs?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "B",
+            "correct_answer_text": "AWS Batch.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Amazon EC2."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "AWS Batch."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Lambda@Edge."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "AWS Fargate."
+                }
+            ]
+        },
+        {
+            "question_number": 22,
+            "question_text": "How can you increase your application\u2019s fault-tolerance while it is being hosted in AWS?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "B",
+            "correct_answer_text": "Deploy your application across multiple Availability Zones.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Deploy your application across multiple EC2 instances."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Deploy your application across multiple Availability Zones."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Host your application on one powerful EC2 instance type instead of multiple smaller instances."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Deploy the underlying application resources across multiple subnets."
+                }
+            ]
+        },
+        {
+            "question_number": 23,
+            "question_text": "Which of the following AWS Support Plans gives you 24/7 access to Cloud Support Engineers via email & phone? (Choose TWO)",
+            "is_multiple_choice": true,
+            "correct_answer_keys": "C, E",
+            "correct_answer_text": "Enterprise. | Business.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Developer."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Premium."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Enterprise."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Standard."
+                },
+                {
+                    "option_key": "E",
+                    "option_text": "Business."
+                }
+            ]
+        },
+        {
+            "question_number": 24,
+            "question_text": "Which of the following requires an access key ID and a secret access key to get long-lived programmatic access to AWS resources? (Choose TWO)",
+            "is_multiple_choice": true,
+            "correct_answer_keys": "B, D",
+            "correct_answer_text": "IAM user. | AWS account root user.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "IAM group."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "IAM user."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "IAM role."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "AWS account root user."
+                },
+                {
+                    "option_key": "E",
+                    "option_text": "TAM."
+                }
+            ]
+        },
+        {
+            "question_number": 25,
+            "question_text": "Which of the following is a benefit of the \"Loose Coupling\" architecture principle?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "D",
+            "correct_answer_text": "It allows individual application components or services to be modified without affecting other components.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "It eliminates the need for change management."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "It allows for Cross-Region Replication."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "It helps AWS customers reduce Privileged Access to AWS resources."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "It allows individual application components or services to be modified without affecting other components."
+                }
+            ]
+        },
+        {
+            "question_number": 26,
+            "question_text": "A company needs to host a big data application on AWS using EC2 instances. Which of the following AWS Storage services would they choose to automatically get high throughput to multiple compute nodes?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "C",
+            "correct_answer_text": "Amazon Elastic File System.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Amazon Elastic Block Store."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "AWS Storage Gateway."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Amazon Elastic File System."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "S3."
+                }
+            ]
+        },
+        {
+            "question_number": 27,
+            "question_text": "Which of the following Cloud Computing deployment models eliminates the need to run and maintain physical data centers?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "D",
+            "correct_answer_text": "Cloud.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "On-premises."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "IaaS."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "PaaS."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Cloud."
+                }
+            ]
+        },
+        {
+            "question_number": 28,
+            "question_text": "What are the benefits of the AWS Marketplace service? (Choose TWO)",
+            "is_multiple_choice": true,
+            "correct_answer_keys": "D, E",
+            "correct_answer_text": "Provides flexible pricing options that suit most customer needs. | Provides software solutions that run on AWS or any other Cloud vendor.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Protects customers by performing periodic security checks on listed products."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Per-second billing."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Provides cheaper options for purchasing Amazon EC2 on-demand instances."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Provides flexible pricing options that suit most customer needs."
+                },
+                {
+                    "option_key": "E",
+                    "option_text": "Provides software solutions that run on AWS or any other Cloud vendor."
+                }
+            ]
+        },
+        {
+            "question_number": 29,
+            "question_text": "What is the benefit of Amazon EBS volumes being automatically replicated within the same availability zone?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "B",
+            "correct_answer_text": "Durability.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Elasticity."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Durability."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Traceability."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Accessibility."
+                }
+            ]
+        },
+        {
+            "question_number": 30,
+            "question_text": "You are planning to launch an advertising campaign over the coming weekend to promote a new digital product. It is expected that there will be heavy spikes in load during the campaign period, and you can\u2019t afford any downtime. You need additional compute resources to handle the additional load. What is the most cost-effective EC2 instance purchasing option for this job?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "D",
+            "correct_answer_text": "On-Demand Instances.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Savings Plans."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Spot Instances."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Reserved Instances."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "On-Demand Instances."
+                }
+            ]
+        },
+        {
+            "question_number": 31,
+            "question_text": "Which of the following AWS services integrates with AWS Shield and AWS Web Application Firewall (AWS WAF) to protect against network and application layer DDoS attacks?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "D",
+            "correct_answer_text": "Amazon CloudFront.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Amazon EFS."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "AWS Secrets Manager."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "AWS Systems Manager."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Amazon CloudFront."
+                }
+            ]
+        },
+        {
+            "question_number": 32,
+            "question_text": "Which of the following services is used when encrypting EBS volumes?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "B",
+            "correct_answer_text": "AWS KMS.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "AWS WAF."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "AWS KMS."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Amazon Macie."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Amazon GuardDuty."
+                }
+            ]
+        },
+        {
+            "question_number": 33,
+            "question_text": "The AWS account administrator of your company has been fired. With the permissions granted to him as an administrator, he was able to create multiple IAM user accounts and access keys. Additionally, you are not sure whether he has access to the AWS root account or not. What should you do immediately to protect your AWS infrastructure? (Choose TWO)",
+            "is_multiple_choice": true,
+            "correct_answer_keys": "D, E",
+            "correct_answer_text": "Rotate all access keys. | Change the email address and password of the root user account and enable MFA.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Download all the attached policies in a safe place."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Delete all IAM accounts and recreate them."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Use the CloudWatch service to check all API calls that have been made in your account since the administrator was fired."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Rotate all access keys."
+                },
+                {
+                    "option_key": "E",
+                    "option_text": "Change the email address and password of the root user account and enable MFA."
+                }
+            ]
+        },
+        {
+            "question_number": 34,
+            "question_text": "What is the Amazon ElastiCache service used for? (Choose TWO)",
+            "is_multiple_choice": true,
+            "correct_answer_keys": "A, C",
+            "correct_answer_text": "Provide an in-memory data storage service. | Improve web application performance.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Provide an in-memory data storage service."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Reduce delivery costs using Edge Locations."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Improve web application performance."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Provide a Chef-compatible cache to speed up application response."
+                },
+                {
+                    "option_key": "E",
+                    "option_text": "Distribute requests to multiple instances."
+                }
+            ]
+        },
+        {
+            "question_number": 35,
+            "question_text": "The elasticity of the AWS Cloud enables customers to save costs when compared to traditional hosting providers. What can AWS customers do to benefit from the elasticity of the AWS Cloud? (Choose TWO)",
+            "is_multiple_choice": true,
+            "correct_answer_keys": "B, E",
+            "correct_answer_text": "Use Amazon EC2 Auto Scaling. | Use Serverless Computing whenever possible.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Deploy your resources across multiple Availability Zones."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Use Amazon EC2 Auto Scaling."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Deploy your resources in another region."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Use Elastic Load Balancing."
+                },
+                {
+                    "option_key": "E",
+                    "option_text": "Use Serverless Computing whenever possible."
+                }
+            ]
+        },
+        {
+            "question_number": 36,
+            "question_text": "What are some of the benefits of using On-Demand EC2 instances? (Choose TWO)",
+            "is_multiple_choice": true,
+            "correct_answer_keys": "C, E",
+            "correct_answer_text": "They remove the need to buy \u201csafety net\u201d capacity to handle periodic traffic spikes. | You can increase or decrease your compute capacity depending on the demands of your application.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "They provide free capacity when testing your new applications."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "They are cheaper than all other EC2 options."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "They remove the need to buy \u201csafety net\u201d capacity to handle periodic traffic spikes."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "They only require 1-2 days for setup and configuration."
+                },
+                {
+                    "option_key": "E",
+                    "option_text": "You can increase or decrease your compute capacity depending on the demands of your application."
+                }
+            ]
+        },
+        {
+            "question_number": 37,
+            "question_text": "Each AWS Region is composed of multiple Availability Zones. Which of the following best describes what an Availability Zone is?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "D",
+            "correct_answer_text": "It is a distinct location within a region that is insulated from \u00ab failures in other Availability Zones.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "It is a data center designed to be completely isolated from other data centers in the same region."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "It is a collection of data centers distributed in multiple countries."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "It is a logically isolated network of the AWS Cloud."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "It is a distinct location within a region that is insulated from \u00ab failures in other Availability Zones."
+                }
+            ]
+        },
+        {
+            "question_number": 38,
+            "question_text": "AWS provides disaster recovery capability by allowing customers to deploy infrastructure into multiple [...].",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "A",
+            "correct_answer_text": "Regions.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Regions."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Transportation devices."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Support plans."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Edge locations."
+                }
+            ]
+        },
+        {
+            "question_number": 39,
+            "question_text": "A financial services company decides to migrate one of its applications to AWS. The application deals with sensitive data, such as credit card information, and must run on a PCI-compliant environment. Which of the following is the company\u2019s responsibility when building a PCI-compliant environment in AWS? (Choose TWO)",
+            "is_multiple_choice": true,
+            "correct_answer_keys": "B, C",
+            "correct_answer_text": "Ensure that AWS services are configured properly to meet all PCI DSS standards. | Restrict any access to cardholder data and create a policy that addresses information security for all personnel.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Start the migration process immediately as all AWS services are PCI compliant."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Ensure that AWS services are configured properly to meet all PCI DSS standards."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Restrict any access to cardholder data and create a policy that addresses information security for all personnel."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Configure the underlying infrastructure of AWS services to meet all PCI DSS requirements."
+                },
+                {
+                    "option_key": "E",
+                    "option_text": "Ensure that all PCI DSS physical security requirements are met."
+                }
+            ]
+        },
+        {
+            "question_number": 40,
+            "question_text": "What is the maximum amount of data that can be stored in S3 in a single AWS account?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "B",
+            "correct_answer_text": "Virtually unlimited storage.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "100 PetaBytes."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Virtually unlimited storage."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "5TeraBytes."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "10 Exabytes."
+                }
+            ]
+        },
+        {
+            "question_number": 41,
+            "question_text": "Which pillar of the AWS Well-Architected Framework provides recommendations to help customers select the right compute resources based on workload requirements?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "C",
+            "correct_answer_text": "Performance Efficiency.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Operational Excellence."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Security."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Performance Efficiency."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Reliability."
+                }
+            ]
+        },
+        {
+            "question_number": 42,
+            "question_text": "Which AWS service delivers data, videos, applications, and APIs to users globally with low latency and high transfer speeds?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "C",
+            "correct_answer_text": "Amazon CloudFront.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Amazon Route 53."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Amazon Connect."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Amazon CloudFront."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Amazon EC2."
+                }
+            ]
+        },
+        {
+            "question_number": 43,
+            "question_text": "Which of the following steps should be taken by a customer when conducting penetration testing on AWS?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "D",
+            "correct_answer_text": "Request and wait for approval from AWS support, and then conduct testing.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Conduct penetration testing using Amazon Inspector, and then notify AWS support."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Request and wait for approval from the customer\u2019s internal security team, and then conduct testing."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Notify AWS support, and then conduct testing immediately."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Request and wait for approval from AWS support, and then conduct testing."
+                }
+            ]
+        },
+        {
+            "question_number": 44,
+            "question_text": "Which AWS Cost Management tool allows you to view the most granular data about your AWS bill?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "C",
+            "correct_answer_text": "AWS Cost and Usage report.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "AWS Cost Explorer."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "AWS Budgets."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "AWS Cost and Usage report."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "AWS Billing dashboard."
+                }
+            ]
+        },
+        {
+            "question_number": 45,
+            "question_text": "Which element of the AWS global infrastructure consists of one or more discrete data centers each with redundant power networking and connectivity which are housed in separate facilities?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "B",
+            "correct_answer_text": "Availability Zones.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "AWS Regions."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Availability Zones."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Edge locations."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Amazon CloudFront."
+                }
+            ]
+        },
+        {
+            "question_number": 46,
+            "question_text": "How many Availability Zones should compute resources be provisioned across to achieve high availability?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "B",
+            "correct_answer_text": "A minimum of two.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "A minimum of one."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "A minimum of two."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "A minimum of three."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "A minimum of four or more."
+                }
+            ]
+        },
+        {
+            "question_number": 47,
+            "question_text": "The AWS Cloud\u2019s multiple Regions are an example of:",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "B",
+            "correct_answer_text": "Global infrastructure.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Agility."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Global infrastructure."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Elasticity."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Pay-as-you-go pricing."
+                }
+            ]
+        },
+        {
+            "question_number": 48,
+            "question_text": "Which AWS service can be used to manually launch instances based on resource requirements?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "C",
+            "correct_answer_text": "Amazon EC2.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Amazon EBS."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Amazon S3."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Amazon EC2."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Amazon ECS."
+                }
+            ]
+        },
+        {
+            "question_number": 49,
+            "question_text": "Which is a recommended pattern for designing a highly available architecture on AWS?",
+            "is_multiple_choice": false,
+            "correct_answer_keys": "C",
+            "correct_answer_text": "Ensure that the application is designed to accommodate failure of any single component.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "Ensure that components have low-latency network connectivity."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Run enough Amazon EC2 instances to operate at peak load."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Ensure that the application is designed to accommodate failure of any single component."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Use a monolithic application that handles all operations."
+                }
+            ]
+        },
+        {
+            "question_number": 50,
+            "question_text": "Which AWS characteristics make AWS cost effective for a workload with dynamic user demand? (Select TWO)",
+            "is_multiple_choice": true,
+            "correct_answer_keys": "C, D",
+            "correct_answer_text": "Elasticity. | Pay-as-you-go pricing.",
+            "options": [
+                {
+                    "option_key": "A",
+                    "option_text": "High availability."
+                },
+                {
+                    "option_key": "B",
+                    "option_text": "Shared security model."
+                },
+                {
+                    "option_key": "C",
+                    "option_text": "Elasticity."
+                },
+                {
+                    "option_key": "D",
+                    "option_text": "Pay-as-you-go pricing."
+                },
+                {
+                    "option_key": "E",
+                    "option_text": "Reliability."
+                }
+            ]
+        }
+    ]
+}
