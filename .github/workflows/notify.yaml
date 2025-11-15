@@ -19,10 +19,11 @@ jobs:
         run: |
           AUTHOR_NAME=$(git log -1 --pretty=format:'%an')
           COMMIT_HASH=$(git log -1 --pretty=format:'%H')
+          COMMIT_MSG=$(git log -1 --pretty=format:'%s')
           CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r $COMMIT_HASH)
 
-          echo "AUTHOR_NAME=$AUTHOR_NAME" >> $GITHUB_ENV
           echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
+          echo "COMMIT_MSG=$COMMIT_MSG" >> $GITHUB_ENV
           echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
 
       - name: Send Email
@@ -43,6 +44,8 @@ jobs:
                   <h2 style="color: #2d89ef;">🚀 FastPrepPlus Code Update Notification</h2>
                   <p><strong>Author:</strong> ${{ env.AUTHOR_NAME }}</p>
                   <p><strong>Commit Hash:</strong> <code>${{ env.COMMIT_HASH }}</code></p>
+                  <p><strong>Message:</strong> ${{ env.COMMIT_MSG }}</p>
+
                   <p><strong>Files Changed:</strong></p>
                   <ul>
                   ${{ env.CHANGED_FILES }}
