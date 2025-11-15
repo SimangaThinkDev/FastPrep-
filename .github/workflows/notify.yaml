@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # Might try 0 for full history if this does not work
 
       - name: Collect Commit Info
         id: commit_info
