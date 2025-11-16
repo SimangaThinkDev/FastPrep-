@@ -21,10 +21,16 @@ jobs:
           COMMIT_HASH=$(git log -1 --pretty=format:'%H')
           COMMIT_MSG=$(git log -1 --pretty=format:'%s')
           CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r $COMMIT_HASH)
-
+          
+          echo "AUTHOR_NAME=$AUTHOR_NAME" >> $GITHUB_ENV
           echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
           echo "COMMIT_MSG=$COMMIT_MSG" >> $GITHUB_ENV
-          echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
+          
+          {
+            echo "CHANGED_FILES<<EOF"
+            echo "$CHANGED_FILES"
+            echo "EOF"
+          } >> $GITHUB_ENV
 
       - name: Send Email
         uses: dawidd6/action-send-mail@v3
