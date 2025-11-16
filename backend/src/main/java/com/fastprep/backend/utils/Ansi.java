@@ -12,6 +12,7 @@ package com.fastprep.backend.utils;
  */
 public final class Ansi {
     private static final String RESET = "\u001B[0m";
+    static String ESC = "\u001B";
 
     // Foreground Colors
 
@@ -175,6 +176,19 @@ public final class Ansi {
      */
     public static String onWhite(String text) {
         return "\u001B[47m" + text + RESET;
+    }
+
+    /**
+     *
+     * @param text
+     * @param url
+     * @return
+     */
+    public static String hyperlink(String text, String url) {
+        String start = ESC + "]8;;" + url + ESC + "\\";
+        String end   = ESC + "]8;;" + ESC + "\\";
+
+        return start + text + end;
     }
 
     // Prevent instantiation
