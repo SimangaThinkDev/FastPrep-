@@ -11,6 +11,7 @@
 
 * {
     box-sizing: border-box;
+    /* border: 1px solid white; */
     font-family: "Momo Trust Display", sans-serif;
 }
 
@@ -66,10 +67,10 @@ box-icon {
     text-align: center;
 
     /* Styling */
-    font-family: "Momo Trust Display", sans-serif;
-    font-size: 3rem; 
-    font-weight: 600; 
-    line-height: 1.2; 
+    font-family: "Playwrite NZ Guides", cursive;
+    font-size: 30px;
+    font-weight: 400;
+    font-style: normal;
 
     /* Color and Spacing */
     color: var(--text-color); 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Map;
 
 import static com.fastprep.backend.utils.DebugTools.*;
@@ -18,7 +19,17 @@ import static com.fastprep.backend.utils.DebugTools.*;
 @RequestMapping("api/exams")
 public class ApiController {
 
-    private static final String BASE_PATH = "data_scraping/exams_data_as_json/";
+    private static final String BASE_PATH = "data_scraping/exams";
+    private static final String PractitionerExams = BASE_PATH + "/AWS Cloud Practitioner/";
+    private static final List listOfExams;
+
+    static {
+        try {
+            listOfExams = Files.list( Path.of( BASE_PATH ) ).toList();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     /**
      * Helps us get the exam data for each exam
@@ -33,7 +44,7 @@ public class ApiController {
 
         try {
             String filename = "practice-exam-" + id + ".json";
-            Path path = Path.of("data_scraping/exams_data_as_json/" + filename);
+            Path path = Path.of(PractitionerExams + filename);
 
             String json = Files.readString(path);
 

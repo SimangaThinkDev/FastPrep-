@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FastPrep+ - Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/exams.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Playwrite+NZ+Guides&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="header-content">
+            <a th:href="@{/}" class="logo-text" style="color: inherit; text-decoration: none;">
+                FastPrep
+            </a>
+            <box-icon name='plus-medical'></box-icon>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-text-container">
+                <h1>Master Your Skills: Practice Exams</h1>
+                <p>
+                    Validate your readiness with our full-length, simulated certification tests.
+                    We currently offer <strong th:text="${numAvailableCourses}">3</strong> distinct courses to choose from.
+                </p>
+                <a href="#exam-grid" class="btn primary-cta">Start Exploring Exams</a>
+            </div>
+            <div class="hero-image-placeholder">
+                <img src="/images/success-graphic.jpg" alt="Graphic representing success and achievement.">
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Main Exam Catalogue: The Card Grid -->
+    <section id="exam-grid" class="exam-catalogue-section">
+        <div class="container">
+            <h2 class="section-title">Available Certification Practice Tests</h2>
+
+            <div class="exam-catalogue-grid">
+
+                <!--
+                    Thymeleaf Loop: Iterates over the list of course names
+                    passed from the Spring controller: allCertificationAvailable
+                -->
+                <div class="exam-card" th:each="courseName : ${allCertificationAvailable}">
+                    <div class="card-icon">
+                        <!-- Icon changes based on course index (just for visual variety) -->
+                        <i class="fas"
+                           th:classappend="${courseNameStat.index % 3 == 0} ? 'fa-clipboard-list' :
+                                               (${courseNameStat.index % 3 == 1} ? 'fa-award' : 'fa-star')">
+                        </i>
+                    </div>
+                    <div class="card-content">
+                        <!-- Display the dynamic course name -->
+                        <h3 class="exam-title" th:text="${courseName}">AWS Certified Solutions Architect</h3>
+
+                        <!-- Display Fixed Exam Details -->
+                        <div class="exam-details">
+                                <span class="detail-item">
+                                    <i class="fas fa-question-circle"></i>
+                                    <strong th:text="50">50</strong> Questions
+                                </span>
+                            <span class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <strong th:text="180">180</strong> Minutes
+                                </span>
+                        </div>
+
+                        <p class="exam-hook">
+                            Test your comprehensive knowledge and scenario-based skills required for this highly-valued certification.
+                        </p>
+                    </div>
+
+                    <!--
+                        Action Button: Links to a detail page.
+                        We pass the course name as a parameter in the URL.
+                    -->
+                    <a th:href="@{/exam/details(name=${courseName})}" class="btn secondary-cta">
+                        Start Practice
+                    </a>
+                </div>
+
+                <!-- Placeholder Card for when no exams are found (optional) -->
+                <div class="exam-card" th:if="${#lists.isEmpty(allCertificationAvailable)}">
+                    <div class="card-icon"><i class="fas fa-frown"></i></div>
+                    <div class="card-content">
+                        <h3 class="exam-title">No Exams Found</h3>
+                        <p class="exam-details">Please check back later.</p>
+                        <p class="exam-hook">
+                            We are working hard to prepare new content. If you expected to see exams here, please contact support.
+                        </p>
+                    </div>
+                    <a href="#" class="btn secondary-cta" style="pointer-events: none; opacity: 0.6;">Contact Support</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p class="footer-copyright">
+                &copy; 2025 FastPrep+. All rights reserved.
+            </p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <span class="link-separator">|</span>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
