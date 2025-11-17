@@ -11,7 +11,7 @@ public class BackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BackendApplication.class, args);
 
-        // Easy access to homepage
+        // Easy access to homepage ! Remove for production environments
         String url = "http://localhost:8080";
         System.out.println(
                 green( "Live on " + hyperlink( url, "" ) )

@@ -1,0 +1,537 @@
+/* ---------------------------------------------------------------------------- *\
+   ------------------------------ Root Variables ------------------------------
+\* ---------------------------------------------------------------------------- */
+:root {
+    --bg-color: #040a16; /* Darkest Navy/Black */
+    --second-bg-color: #213448; /* Mid-Dark Navy */
+    --third-bg-color: rgb(22, 30, 68); /* Deep Navy/Indigo */
+    --text-color: #ededed; /* Near White */
+    --main-color: #132fa8; /* Primary Accent Blue */
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Momo Trust Display", sans-serif;
+}
+
+/* ---------------------------------------------------------------------------- *\
+   ------------------------------------ Body ----------------------------------
+\* ---------------------------------------------------------------------------- */
+body {
+    background: var(--bg-color);
+}
+
+/* ---------------------------------------------------------------------------- *\
+   --------------------------- Main Header (FastPrep) -------------------------
+\* ---------------------------------------------------------------------------- */
+#main-header {
+    background-color: var(--second-bg-color);
+    width: 100%;
+}
+
+.header-content {
+    /* Flexbox for centering items *inside* */
+    display: flex;
+    justify-content: center; /* Centers items horizontally */
+    align-items: center; /* Centers items vertically */
+    /* Centers the content block itself */
+    margin: 0 auto; 
+    max-width: fit-content;
+}
+
+.logo-text {
+    font-family: "Momo Trust Display", sans-serif;
+    color: white; 
+    font-size: 4rem; 
+    font-weight: 400;
+    font-style: normal;
+    margin-right: 8px; /* Space between text and icon */
+}
+
+/* Styling for the Boxicon in the Header */
+box-icon {
+    fill: yellow; 
+    width: 4rem; 
+    height: 4rem;
+}
+
+/* ---------------------------------------------------------------------------- *\
+   --------------------------- Introductory Heading (h1) ----------------------
+\* ---------------------------------------------------------------------------- */
+.intro-heading {
+    /* Ensures the element takes up full width for centering */
+    width: 100%;
+
+    /* Centering the text */
+    text-align: center;
+
+    /* Styling */
+    font-family: "Momo Trust Display", sans-serif;
+    font-size: 3rem; 
+    font-weight: 600; 
+    line-height: 1.2; 
+
+    /* Color and Spacing */
+    color: var(--text-color); 
+    margin-top: 30px; 
+    margin-bottom: 20px; 
+    padding: 0 10px; /* Prevent text from hitting screen edges */
+}
+
+/* ---------------------------------------------------------------------------- *\
+   -------------------------------- Hero Section ------------------------------
+\* ---------------------------------------------------------------------------- */
+.hero-section {
+    padding: 60px 20px;
+    background-color: var(--second-bg-color);
+    width: 100%;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    max-width: 900px; /* Max content width */
+    margin: 0 auto; /* Center the content block */
+    gap: 10px; /* Space between the two columns */
+}
+
+/* Hero Text Column (50% width) */
+.hero-text {
+    flex: 1; /* Takes up 50% of the space */
+    color: var(--text-color);
+}
+
+.hero-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 0px; /* Adjusted: Removed 30px space since the button was moved */
+}
+
+/* Hero Icon Column (50% width) */
+.hero-icon-container {
+    flex: 1; /* Takes up 50% of the space */
+    display: flex;
+    justify-content: flex-end; /* Pushes the icon to the far right */
+}
+
+/* Styling the Boxicon within the Hero */
+.hero-icon-container box-icon {
+    fill: yellow;
+    width: 150px; 
+    height: 150px;
+}
+
+/* ---------------------------------------------------------------------------- *\
+   --------------------------- Call to Action Section (CTA) -------------------
+\* ---------------------------------------------------------------------------- */
+.cta-section {
+    padding: 50px 20px;
+    text-align: center; 
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-text {
+    color: var(--text-color); 
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 25px; 
+    line-height: 1.4;
+}
+
+/* Styling for the CTA Button */
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px; 
+    background-color: var(--main-color); 
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button:hover {
+    background-color: #0d1e78; 
+    transform: translateY(-2px); 
+}
+
+/* ---------------------------------------------------------------------------- *\
+   ----------------------------- Features Section -----------------------------
+\* ---------------------------------------------------------------------------- */
+.features-section {
+    padding: 80px 20px;
+    background-color: var(--second-bg-color); /* Use the darkest background color */
+}
+
+.features-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.features-question {
+    color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* Container for the side-by-side cards */
+.card-container {
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px; /* Space between cards */
+}
+
+/* Individual Card Styling */
+.feature-card {
+    /* Flex settings for uniform size: Each card takes up equal space */
+    flex: 1 1 300px; /* flex-grow: 1, flex-shrink: 1, base width: 300px */
+
+    background-color: var(--bg-color); /* Card background */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+
+    /* Ensures uniform height regardless of text length difference */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-topic {
+    color: var(--main-color); /* Topic uses the accent blue */
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+.card-body {
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+    /* Pushes the body text to fill remaining space, helping uniform height */
+    flex-grow: 1;
+}
+
+/* ---------------------------------------------------------------------------- *\
+   ------------------------------- Quote Section ------------------------------
+\* ---------------------------------------------------------------------------- */
+.quote-section {
+    background-color: var(--bg-color); /* Darkest background */
+    padding: 80px 20px;
+    text-align: center; /* Centers the block elements inside */
+    width: 100%;
+}
+
+.quote-container {
+    max-width: 900px; /* Limits the quote line length for readability */
+    margin: 0 auto;
+}
+
+.main-quote {
+    color: var(--text-color);
+    font-size: 2.2rem; /* Large, easy-to-read font */
+    font-style: italic; /* Emphasize the quote text */
+    line-height: 1.4;
+    margin-bottom: 20px;
+
+    /* Resetting default blockquote margin */
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+}
+
+.quote-author {
+    color: var(--main-color); /* Use the accent blue for the author */
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+/* ---------------------------------------------------------------------------- *\
+   ----------------------------- Developers Section ---------------------------
+\* ---------------------------------------------------------------------------- */
+.team-section {
+    background-color: var(--second-bg-color); /* Use mid-dark background */
+    padding: 80px 20px;
+}
+
+.team-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.team-heading {
+    color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* Container for the two main developer cards (side-by-side) */
+.developer-container {
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px; /* Space between the two developer cards */
+}
+
+/* Individual Developer Card (The left/right column) */
+.developer-card {
+    flex: 1; /* Makes both cards take up equal space */
+    min-width: 300px;
+    padding: 25px;
+    background-color: var(--third-bg-color); /* Distinct background for the card */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+    /* Flexbox to arrange Picture (left) and About (right) */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.dev-picture-placeholder {
+    /* Placeholder for the image */
+    flex-shrink: 0; /* Prevents the image from shrinking */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Make it round */
+    background-color: var(--main-color); /* Placeholder color */
+    border: 3px solid var(--text-color);
+    /* Center the placeholder text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* Update your CSS to target the container and the image */
+.dev-picture {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /* Hide anything that exceeds the circle */
+    overflow: hidden;
+}
+
+.dev-picture img {
+    /* Ensure the image covers the container without distortion */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dev-info {
+    flex-grow: 1;
+    color: var(--text-color);
+}
+
+.dev-name {
+    color: var(--text-color);
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.dev-bio {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* ---------------------------------------------------------------------------- *\
+   ----------------------------- Contributions Section ------------------------
+\* ---------------------------------------------------------------------------- */
+.contributions-section {
+    background-color: var(--third-bg-color); /* Deep Navy/Indigo */
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.contributions-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contributions-text {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.github-link {
+    /* Ensures the icon container is inline and properly aligned */
+    display: inline-block;
+}
+
+/* Styling the GitHub Boxicon */
+.github-link box-icon {
+    /* Use the primary accent color or white for visibility */
+    fill: var(--main-color);
+    width: 60px; /* Large size for prominence */
+    height: 60px;
+    transition: fill 0.3s ease, transform 0.2s ease;
+}
+
+.github-link:hover box-icon {
+    fill: var(--text-color); /* Change color on hover for feedback */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* ---------------------------------------------------------------------------- *\
+   ---------------------------------- Footer ----------------------------------
+\* ---------------------------------------------------------------------------- */
+.main-footer {
+    background-color: var(--bg-color); /* Darkest background */
+    padding: 20px 20px;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Stack the content vertically */
+    align-items: center; /* Center items horizontally */
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 0.9rem;
+    color: #888; /* Soft gray for copyright text */
+}
+
+.footer-copyright {
+    margin-bottom: 10px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.footer-link {
+    color: #888; /* Soft gray links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--main-color); /* Accent color on hover */
+}
+
+.link-separator {
+    color: #888;
+}
+
+
+/* ---------------------------------------------------------------------------- *\
+   ----------------------------- Responsive Layouts -----------------------------
+\* ---------------------------------------------------------------------------- */
+
+/* Mobile adjustments (<= 900px) - Hero Section Stacking */
+@media (max-width: 900px) {
+    .hero-content {
+        flex-direction: column; /* Stack the text and icon vertically */
+        text-align: center;
+    }
+
+    .hero-icon-container {
+        justify-content: center; /* Center the icon when stacked */
+        order: -1; /* Place the icon above the text on mobile */
+        margin-bottom: 30px;
+    }
+
+    .hero-text {
+        flex: auto; /* Reset flex */
+    }
+}
+
+/* Tablet adjustments (<= 768px) - Main Heading */
+@media (max-width: 768px) {
+    .intro-heading {
+        font-size: 2.2rem;
+    }
+}
+
+/* Mobile adjustments (<= 600px) - CTA Section */
+@media (max-width: 600px) {
+    .cta-text {
+        font-size: 1.5rem;
+    }
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
+
+/* Mobile Responsiveness for Cards (Stacking them vertically) */
+@media (max-width: 992px) {
+    .card-container {
+        /* On medium screens, stack cards vertically */
+        flex-direction: column;
+        align-items: center; /* Center the stacked cards */
+        gap: 20px;
+    }
+
+    .feature-card {
+        /* Make cards full width on mobile */
+        width: 100%;
+        max-width: 450px;
+    }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .main-quote {
+        font-size: 1.8rem;
+    }
+    .quote-author {
+        font-size: 1.1rem;
+    }
+}
+
+/* Mobile Responsiveness: Stack the two developer cards vertically */
+@media (max-width: 768px) {
+    .developer-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .developer-card {
+        /* On smaller screens, stack the picture above the text for better flow */
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .dev-picture-placeholder {
+        margin-bottom: 15px;
+    }
+}
+
+/* Mobile: Ensure better spacing if needed */
+@media (max-width: 480px) {
+    .footer-content {
+        text-align: center;
+    }
+    .footer-links {
+        /* Stack links if the screen is too narrow */
+        flex-direction: column;
+        gap: 0px;
+    }
+    .link-separator {
+        display: none; /* Hide the separator when links stack */
+    }
+}
