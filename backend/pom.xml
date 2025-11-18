@@ -53,6 +53,11 @@
             <artifactId>spring-boot-devtools</artifactId>
             <version>4.0.0-RC2</version>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20250517</version>
+        </dependency>
 	</dependencies>
 
 	<build>

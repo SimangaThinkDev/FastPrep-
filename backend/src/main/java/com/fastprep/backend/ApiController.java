@@ -2,6 +2,8 @@ package com.fastprep.backend;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONObject;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,12 +17,11 @@ import java.util.Map;
 
 import static com.fastprep.backend.utils.DebugTools.*;
 
-@RestController
-@RequestMapping("api/exams")
+@Service
 public class ApiController {
 
     private static final String BASE_PATH = "data_scraping/exams";
-    private static final String PractitionerExams = BASE_PATH + "/AWS Cloud Practitioner/";
+    private static final String PractitionerExams = BASE_PATH + "/AWS Certified Cloud Practitioner/";
     private static final List listOfExams;
 
     static {
@@ -38,9 +39,8 @@ public class ApiController {
      * @return The exam details as json
      * @throws IOException if parsing the json goes wrong
      */
-    @GetMapping("/{id}")
-    public Object getExam(@PathVariable int id) throws IOException {
-        toggleActiveController( "Get Exam -- API Level" );
+    public static JSONObject getExam(int id) throws IOException {
+        toggleActiveController("Get Exam -- API Level");
 
         try {
             String filename = "practice-exam-" + id + ".json";
@@ -49,11 +49,17 @@ public class ApiController {
             String json = Files.readString(path);
 
             ObjectMapper mapper = new ObjectMapper();
-            return mapper.readValue(json, Object.class);
-        } catch (Exception e) {
-            return Map.of("error", "Exam not found");
-        }
 
+            // Jackson reads JSON into a Map. Wrap it in JSONObject.
+            Map<String, Object> map = mapper.readValue(json, Map.class);
+
+            return new JSONObject(map);
+
+        } catch (Exception e) {
+
+            // Same fix: wrap in JSONObject instead of invalid cast
+            return new JSONObject(Map.of("error", "Exam not found"));
+        }
     }
 
 }

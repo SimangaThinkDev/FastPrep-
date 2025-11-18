@@ -75,4 +75,12 @@ public class DebugTools {
         return Files.list(dir).toList();
     }
 
+    public static List<Path> getAllExamsInCourse( String courseName ) {
+        String EXAM_PATH = BASE_PATH + "/" + courseName;
+        try {
+            return Files.list(Path.of(EXAM_PATH)).toList();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

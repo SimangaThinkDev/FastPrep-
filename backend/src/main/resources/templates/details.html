@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FastPrep+ - Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/details.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Playwrite+NZ+Guides&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="header-content">
+            <a th:href="@{/}" class="logo-text" style="text-decoration: none;">
+                FastPrep
+            </a>
+            <box-icon name='plus-medical'></box-icon>
+        </div>
+    </header>
+
+    <section class="header-section">
+        <div class="details-header">
+            <!-- Assuming you add the course title back to the model for clarity -->
+            <h2 class="course-title" th:text="${courseTitle} ?: 'Selected Certification'">AWS Solutions Architect - Associate</h2>
+            <p class="exam-count">
+                <span th:text="${numExams}">3</span> Practice Exams Available
+            </p>
+        </div>
+    </section>
+
+    <div class="container exam-details-content">
+
+        <!-- Individual Exam List -->
+        <div class="individual-exam-list">
+
+            <!-- Loop over the list of Path objects -->
+            <div class="exam-item-card" th:each="examPath, examStat : ${exams}">
+
+                <div class="item-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+
+                <div class="item-content">
+                    <!-- Use the loop status index (starting from 0) + 1 to display "Exam 1", "Exam 2", etc. -->
+                    <h3 class="item-title">Practice Exam <span th:text="${examStat.index + 1}">1</span></h3>
+                    <p class="item-metrics">
+                        <i class="fas fa-question-circle"></i> 50 Questions &nbsp;&bull;&nbsp;
+                        <i class="fas fa-clock"></i> 180 Minutes
+                    </p>
+                </div>
+
+                <!-- Link to start the practice exam -->
+                <!-- We pass the course name and the exam index (as 'id' or 'number') -->
+                <a th:href="@{/exam/start(course=${courseTitle}, examNum=${examStat.index + 1})}"
+                   id="secondary-cta">
+                    Start Practice
+                </a>
+            </div>
+
+            <!-- No Exams Found message -->
+            <div class="no-exams-message" th:if="${#lists.isEmpty(exams)}">
+                <p><i class="fas fa-info-circle"></i> No practice exams found for this course yet.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p class="footer-copyright">
+                &copy; 2025 FastPrep+. All rights reserved.
+            </p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <span class="link-separator">|</span>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

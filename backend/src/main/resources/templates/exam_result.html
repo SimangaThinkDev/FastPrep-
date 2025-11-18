@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FastPrep+ - Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/exams.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Playwrite+NZ+Guides&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="header-content">
+            <a th:href="@{/}" class="logo-text" style="text-decoration: none;">
+                FastPrep
+            </a>
+            <box-icon name='plus-medical'></box-icon>
+        </div>
+    </header>
+
+    <h1 th:text="${message}"></h1>
+    <h3 th:text="'You Scored ' + ${score} + ' out of 50'"></h3>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p class="footer-copyright">
+                &copy; 2025 FastPrep+. All rights reserved.
+            </p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <span class="link-separator">|</span>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

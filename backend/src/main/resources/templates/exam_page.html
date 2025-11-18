@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FastPrep+ - Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/exams.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Playwrite+NZ+Guides&display=swap" rel="stylesheet">
+    <style>
+        .questions-container { max-width: 800px; margin: 40px auto; font-family: Arial, sans-serif; }
+        .question-card {
+            display: none;
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .question-card.active { display: block; }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .question-number { color: #2c3e50; font-size: 1.2em; }
+        .question-type { background: #3498db; color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.9em; }
+
+        .question-text { font-size: 1.4em; margin-bottom: 25px; line-height: 1.5; }
+
+        .options-list { margin-bottom: 30px; }
+        .option-item {
+            display: block;
+            margin: 15px 0;
+            padding: 12px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .option-item:hover { border-color: #3498db; }
+        .option-item input { margin-right: 12px; transform: scale(1.2); }
+
+        .navigation {
+            text-align: center;
+            margin-top: 30px;
+        }
+        button {
+            padding: 12px 30px;
+            font-size: 1.1em;
+            background: #213448 holding71;
+            color: #213448;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:disabled { background: #95a5a6; cursor: not-allowed; }
+        #submitBtn { background: #e74c3c; padding: 15px 50px; font-size: 1.3em; }
+
+        .progress {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.1em;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="header-content">
+            <a th:href="@{/}" class="logo-text" style="text-decoration: none;">
+                FastPrep
+            </a>
+            <box-icon name='plus-medical'></box-icon>
+        </div>
+    </header>
+
+    <section class="questions-container">
+
+        <h1 th:text="${title}" class="exam-title"></h1>
+
+        <div class="progress">
+            Question <span id="currentQ">1</span> of <span id="totalQ" th:text="${questionsArray.length()}"></span>
+        </div>
+
+        <form id="examForm" th:action="@{/exam/submit}" method="post">
+            <input type="hidden" name="examID" th:value="${examID}">
+
+            <!-- All questions will be rendered here (hidden except current) -->
+            <div th:each="q, iterStat : ${questionsArray}"
+                 class="question-card"
+                 th:classappend="${iterStat.index == 0} ? 'active' : ''"
+                 th:data-qnum="${iterStat.index + 1}">
+
+                <div class="question-header">
+                <span class="question-number">
+                    Question <span th:text="${q.get('question_number') - 1}"></span>
+                </span>
+                    <span class="question-type"
+                          th:text="${q.get('is_multiple_choice')} ? 'Multiple Choice' : 'Single Choice'">
+                </span>
+                </div>
+
+                <p class="question-text" th:text="${q.get('question_text')}"></p>
+
+                <div class="options-list">
+                    <label class="option-item"
+                           th:each="opt : ${q.get('options')}">
+
+                        <!-- Single choice: radio -->
+                        <input type="radio"
+                               th:if="${!q.get('is_multiple_choice')}"
+                               th:name="'question_' + ${q.get('question_number')}"
+                               th:value="${opt.get('option_key')}"
+                               required />
+
+                        <!-- Multiple choice: checkbox -->
+                        <input type="checkbox"
+                               th:if="${q.get('is_multiple_choice')}"
+                               th:name="'question_' + ${q.get('question_number')} + '[]'"
+                               th:value="${opt.get('option_key')}" />
+
+                        <span class="option-key" th:text="${opt.get('option_key')} + ')'"></span>
+                        <span class="option-text" th:text="${opt.get('option_text')}"></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="navigation">
+                <button type="button" id="nextBtn" onclick="nextQuestion()">Next Question →</button>
+                <button type="submit" id="submitBtn" style="display:none;">Submit Exam</button>
+            </div>
+        </form>
+
+    </section>
+
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p class="footer-copyright">
+                &copy; 2025 FastPrep+. All rights reserved.
+            </p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <span class="link-separator">|</span>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+<script>
+    const cards = document.querySelectorAll('.question-card');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    const currentQSpan = document.getElementById('currentQ');
+    let currentIndex = 0;
+
+    function showQuestion(index) {
+        cards.forEach((card, i) => {
+            card.classList.toggle('active', i === index);
+        });
+        currentQSpan.textContent = index + 1;
+
+        // Show submit button on last question
+        if (index === cards.length - 1) {
+            nextBtn.style.display = 'none';
+            submitBtn.style.display = 'inline-block';
+        } else {
+            nextBtn.style.display = 'inline-block';
+            submitBtn.style.display = 'none';
+        }
+    }
+
+    function nextQuestion() {
+        // you can validate that at least one option is selected here
+        if (currentIndex < cards.length - 1) {
+            currentIndex++;
+            showQuestion(currentIndex);
+        }
+    }
+
+    // Allow pressing Enter to go next (except on last question)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && currentIndex < cards.length - 1 && document.activeElement.tagName !== 'BUTTON') {
+            e.preventDefault();
+            nextQuestion();
+        }
+    });
+
+    // Initialize
+    showQuestion(0);
+</script>
+
+</html>

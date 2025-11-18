@@ -19,8 +19,8 @@ body {
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
-    color: var(--text-color);
+    background-color: var(--accent-color);
+    color: var(--accent-color);
     line-height: 1.6;
 }
 
@@ -190,6 +190,70 @@ body {
     align-self: flex-start;
     width: 100%;
     text-align: center;
+}
+
+.questions-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.exam-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.question-card {
+    background: #213448;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.question-number {
+    font-weight: bold;
+}
+
+.question-type {
+    font-size: 0.9rem;
+    padding: 3px 8px;
+    border-radius: 8px;
+    background: #213448;
+}
+
+.question-text {
+    font-size: 1.15rem;
+    margin: 10px 0 20px 0;
+}
+
+.options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.option-item input {
+    transform: scale(1.2);
+}
+
+.option-key {
+    font-weight: bold;
 }
 
 /* --- Media Queries for Responsiveness --- */

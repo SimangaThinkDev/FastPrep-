@@ -36,14 +36,14 @@ body {
     justify-content: center; /* Centers items horizontally */
     align-items: center; /* Centers items vertically */
     /* Centers the content block itself */
-    margin: 0 auto; 
+    margin: 0 auto;
     max-width: fit-content;
 }
 
 .logo-text {
     font-family: "Momo Trust Display", sans-serif;
-    color: white; 
-    font-size: 4rem; 
+    color: white;
+    font-size: 4rem;
     font-weight: 400;
     font-style: normal;
     margin-right: 8px; /* Space between text and icon */
@@ -51,8 +51,8 @@ body {
 
 /* Styling for the Boxicon in the Header */
 box-icon {
-    fill: yellow; 
-    width: 4rem; 
+    fill: yellow;
+    width: 4rem;
     height: 4rem;
 }
 
@@ -73,9 +73,9 @@ box-icon {
     font-style: normal;
 
     /* Color and Spacing */
-    color: var(--text-color); 
-    margin-top: 30px; 
-    margin-bottom: 20px; 
+    color: var(--text-color);
+    margin-top: 30px;
+    margin-bottom: 20px;
     padding: 0 10px; /* Prevent text from hitting screen edges */
 }
 
@@ -90,8 +90,8 @@ box-icon {
 
 .hero-content {
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
     max-width: 900px; /* Max content width */
     margin: 0 auto; /* Center the content block */
     gap: 10px; /* Space between the two columns */
@@ -125,7 +125,7 @@ box-icon {
 /* Styling the Boxicon within the Hero */
 .hero-icon-container box-icon {
     fill: yellow;
-    width: 150px; 
+    width: 150px;
     height: 150px;
 }
 
@@ -134,7 +134,7 @@ box-icon {
 \* ---------------------------------------------------------------------------- */
 .cta-section {
     padding: 50px 20px;
-    text-align: center; 
+    text-align: center;
 }
 
 .cta-content {
@@ -143,18 +143,18 @@ box-icon {
 }
 
 .cta-text {
-    color: var(--text-color); 
+    color: var(--text-color);
     font-size: 1.8rem;
     font-weight: 500;
-    margin-bottom: 25px; 
+    margin-bottom: 25px;
     line-height: 1.4;
 }
 
 /* Styling for the CTA Button */
 .cta-button {
     display: inline-block;
-    padding: 15px 30px; 
-    background-color: var(--main-color); 
+    padding: 15px 30px;
+    background-color: var(--main-color);
     color: white;
     text-decoration: none;
     font-size: 1.1rem;
@@ -165,8 +165,8 @@ box-icon {
 }
 
 .cta-button:hover {
-    background-color: #0d1e78; 
-    transform: translateY(-2px); 
+    background-color: #0d1e78;
+    transform: translateY(-2px);
 }
 
 /* ---------------------------------------------------------------------------- *\
@@ -214,8 +214,15 @@ box-icon {
 
 .card-topic {
     color: var(--main-color); /* Topic uses the accent blue */
-    font-size: 1.6rem;
+    font-size: 1rem;
     margin-bottom: 15px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.8rem;
 }
 
 .card-body {
