@@ -1,4 +1,4 @@
-package com.fastprep.site;
+package com.fastprep.site.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.json.JSONArray;
@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.IOException;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 
-import static com.fastprep.site.ApiController.getExam;
-import static com.fastprep.site.utils.GradingTools.gradeAll;
-import static com.fastprep.site.utils.Tools.*;
+import static com.fastprep.site.persistence.ExamFileOperations.*;
+import static com.fastprep.site.service.GradingTools.gradeAll;
+import static com.fastprep.site.service.Tools.*;
 
 @Controller
 @RequestMapping( "" )

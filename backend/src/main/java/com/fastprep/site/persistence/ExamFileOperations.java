@@ -1,19 +1,65 @@
-package com.fastprep.site.utils;
+package com.fastprep.site.persistence;
 
-import jakarta.servlet.http.HttpServletRequest;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-import static com.fastprep.site.utils.Ansi.*;
+import static com.fastprep.site.service.Ansi.yellow;
+import static com.fastprep.site.service.Tools.*;
 
-public class Tools {
+@Service
+public class ExamFileOperations {
 
     private static final String BASE_PATH = "data_scraping/exams";
+    private static final String PractitionerExams = BASE_PATH + "/AWS Certified Cloud Practitioner/";
+    private static final List listOfExams;
+
+    static {
+        try {
+            listOfExams = Files.list( Path.of( BASE_PATH ) ).toList();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Helps us get the exam data for each exam
+     *
+     * @param id The exam id that the user chose
+     * @return The exam details as json
+     */
+    public static JSONObject getExam(int id) {
+
+        try {
+            String filename = "practice-exam-" + id + ".json";
+            Path path = Path.of(PractitionerExams + filename);
+
+            String json = Files.readString(path);
+
+            ObjectMapper mapper = new ObjectMapper();
+
+            // Jackson reads JSON into a Map. Wrap it in JSONObject.
+            Map<String, Object> map = mapper.readValue(json, Map.class);
+
+            return new JSONObject(map);
+
+        }  catch (IOException e) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Exam not found", e
+            );
+        }
+    }
+
 
     /**
      * Displays active controller in a neat manner,
@@ -72,6 +118,12 @@ public class Tools {
         return allCourses;
     }
 
+    /**
+     * Essentially gives us the courses that are currently
+     * available in the db/filesystem
+     *
+     * @return The list of courses as Path Objects
+     */
     public static List<Path> getAllCoursePaths() {
         try {
             return Files.list(Path.of(BASE_PATH))
@@ -86,6 +138,12 @@ public class Tools {
         }
     }
 
+    /**
+     * Gets all the exams that are stored for a course
+     *
+     * @param courseName The name of the course that is being accessed
+     * @return the list of exams as path that exist in the course
+     */
     public static List<Path> getAllExamsInCourse( String courseName ) {
         String EXAM_PATH = BASE_PATH + "/" + courseName;
         try {
@@ -93,27 +151,6 @@ public class Tools {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static Map<Integer, List<String> > extractUserData(HttpServletRequest request ) {
-        Map<Integer, List<String>> userAnswers = new HashMap<>();
-
-        // Loop through all parameters
-        request.getParameterMap().forEach((key, values) -> {
-            if (key.startsWith("question_")) {
-                String qNumStr = key.replace("question_", "").replace("[]", "");
-                int qNum = Integer.parseInt(qNumStr);
-
-                // For multiple choice, values is array; for single it's single value
-                List<String> selected = Arrays.asList(values);
-                if (selected.size() == 1 && selected.get(0).isEmpty()) {
-                    selected = Collections.emptyList(); // no selection
-                }
-                userAnswers.put(qNum, selected);
-            }
-        });
-
-        return userAnswers;
     }
 
 }
