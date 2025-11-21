@@ -1,13 +1,11 @@
-package com.fastprep.backend;
+package com.fastprep.site;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONObject;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,7 +13,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
-import static com.fastprep.backend.utils.DebugTools.*;
+import static com.fastprep.site.utils.Tools.*;
 
 @Service
 public class ApiController {
@@ -37,9 +35,8 @@ public class ApiController {
      *
      * @param id The exam id that the user chose
      * @return The exam details as json
-     * @throws IOException if parsing the json goes wrong
      */
-    public static JSONObject getExam(int id) throws IOException {
+    public static JSONObject getExam(int id) {
         toggleActiveController("Get Exam -- API Level");
 
         try {
@@ -55,10 +52,10 @@ public class ApiController {
 
             return new JSONObject(map);
 
-        } catch (Exception e) {
-
-            // Same fix: wrap in JSONObject instead of invalid cast
-            return new JSONObject(Map.of("error", "Exam not found"));
+        }  catch (IOException e) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Exam not found", e
+            );
         }
     }
 

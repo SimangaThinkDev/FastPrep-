@@ -1,4 +1,4 @@
-package com.fastprep.backend.utils;
+package com.fastprep.site.utils;
 
 /**
  * Utility class for applying ANSI foreground and background colors to strings.

@@ -9,6 +9,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Playwrite+NZ+Guides&display=swap" rel="stylesheet">
+    <style>
+        .score-container {
+            max-width: 600px;
+            margin: 60px auto;
+            text-align: center;
+            padding: 40px;
+            background: #f4f8fc;
+            border-radius: 16px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+        }
+
+        .score-container h1 {
+            font-size: 2.4em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .score-container h3 {
+            font-size: 1.5em;
+            color: #34495e;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,8 +43,12 @@
         </div>
     </header>
 
-    <h1 th:text="${message}"></h1>
-    <h3 th:text="'You Scored ' + ${score} + ' out of 50'"></h3>
+    <section>
+        <div class="score-container">
+            <h1 id="resultMessage"></h1>
+            <h3 id="resultScore"></h3>
+        </div>
+    </section>
 
     <footer class="main-footer">
         <div class="footer-content">
@@ -38,5 +64,40 @@
     </footer>
 
 </body>
+
+<script th:inline="javascript">
+    const score = /*[[${score}]]*/ 0;   // Thymeleaf injects the number here
+    const total = 50;
+
+    const msgEl = document.getElementById("resultMessage");
+    const scoreEl = document.getElementById("resultScore");
+
+    function getMessage(score) {
+
+        if (score === total) {
+            return "🔥 Perfect Score! You're unstoppable!";
+        }
+        if (score >= 45) {
+            return "🌟 Excellent Work! Almost perfect!";
+        }
+        if (score >= 35) {
+            return "👍 Great Job! You really know your stuff!";
+        }
+        if (score >= 25) {
+            return "🙂 Good Effort! Keep improving!";
+        }
+        if (score >= 15) {
+            return "😐 You Passed, but there's room to grow!";
+        }
+        if (score >= 5) {
+            return "☹️ Not great... review the material and try again.";
+        }
+
+        return "💀 0–5? Did you even read the questions? 😭";
+    }
+
+    msgEl.textContent = getMessage(score);
+    scoreEl.textContent = `You scored ${score} out of ${total}`;
+</script>
 
 </html>

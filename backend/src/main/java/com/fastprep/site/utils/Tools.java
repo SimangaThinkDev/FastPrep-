@@ -1,14 +1,17 @@
-package com.fastprep.backend.utils;
+package com.fastprep.site.utils;
+
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import static com.fastprep.backend.utils.Ansi.*;
+import static com.fastprep.site.utils.Ansi.*;
 
-public class DebugTools {
+public class Tools {
 
     private static final String BASE_PATH = "data_scraping/exams";
 
@@ -69,10 +72,18 @@ public class DebugTools {
         return allCourses;
     }
 
-    public static List<Path> getAllCoursePaths() throws IOException {
-        Path dir = Path.of(BASE_PATH);
-        // Lists the files once
-        return Files.list(dir).toList();
+    public static List<Path> getAllCoursePaths() {
+        try {
+            return Files.list(Path.of(BASE_PATH))
+                    .filter(Files::isDirectory)
+                    .toList();
+        } catch (IOException e) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND,
+                    "Exam directory not found or cannot be read",
+                    e
+            );
+        }
     }
 
     public static List<Path> getAllExamsInCourse( String courseName ) {
@@ -83,4 +94,26 @@ public class DebugTools {
             throw new RuntimeException(e);
         }
     }
+
+    public static Map<Integer, List<String> > extractUserData(HttpServletRequest request ) {
+        Map<Integer, List<String>> userAnswers = new HashMap<>();
+
+        // Loop through all parameters
+        request.getParameterMap().forEach((key, values) -> {
+            if (key.startsWith("question_")) {
+                String qNumStr = key.replace("question_", "").replace("[]", "");
+                int qNum = Integer.parseInt(qNumStr);
+
+                // For multiple choice, values is array; for single it's single value
+                List<String> selected = Arrays.asList(values);
+                if (selected.size() == 1 && selected.get(0).isEmpty()) {
+                    selected = Collections.emptyList(); // no selection
+                }
+                userAnswers.put(qNum, selected);
+            }
+        });
+
+        return userAnswers;
+    }
+
 }

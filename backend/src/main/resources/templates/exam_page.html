@@ -180,7 +180,16 @@
     }
 
     function nextQuestion() {
-        // you can validate that at least one option is selected here
+        // Validate that at least one option is selected
+        const currentCard = cards[currentIndex];
+        const inputs = currentCard.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+        const anyChecked = Array.from(inputs).some(inp => inp.checked);
+
+        if (!anyChecked) {
+            alert("Please select at least one option before proceeding.");
+            return;
+        }
+
         if (currentIndex < cards.length - 1) {
             currentIndex++;
             showQuestion(currentIndex);
