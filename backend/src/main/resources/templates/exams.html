@@ -46,50 +46,39 @@
 
             <div class="exam-catalogue-grid">
 
-                <!--
-                    Thymeleaf Loop: Iterates over the list of course names
-                    passed from the Spring controller: allCertificationAvailable
-                -->
-                <div class="exam-card" th:each="courseName : ${allCertificationAvailable}">
+                <!-- Loop over levels (Map<String, Long>) -->
+                <div class="exam-card" th:each="entry, entryStat : ${allCertificationAvailable}">
                     <div class="card-icon">
-                        <!-- Icon changes based on course index (just for visual variety) -->
                         <i class="fas"
-                           th:classappend="${courseNameStat.index % 3 == 0} ? 'fa-clipboard-list' :
-                                               (${courseNameStat.index % 3 == 1} ? 'fa-award' : 'fa-star')">
+                           th:classappend="${entryStat.index % 3 == 0} ? 'fa-clipboard-list' :
+                                     (${entryStat.index % 3 == 1} ? 'fa-award' : 'fa-star')">
                         </i>
                     </div>
                     <div class="card-content">
-                        <!-- Display the dynamic course name -->
-                        <h3 class="exam-title" th:text="${courseName}">AWS Certified Solutions Architect</h3>
+                        <!-- Level name -->
+                        <h3 class="exam-title" th:text="${entry.key}">AWS Cloud Practitioner</h3>
 
-                        <!-- Display Fixed Exam Details -->
+                        <!-- Number of exams in this level -->
                         <div class="exam-details">
-                                <span class="detail-item">
-                                    <i class="fas fa-question-circle"></i>
-                                    <strong th:text="50">50</strong> Questions
-                                </span>
-                            <span class="detail-item">
-                                    <i class="fas fa-clock"></i>
-                                    <strong th:text="180">180</strong> Minutes
-                                </span>
+                        <span class="detail-item">
+                            <i class="fas fa-question-circle"></i>
+                            <strong th:text="${entry.value}">10</strong> Exams
+                        </span>
                         </div>
 
                         <p class="exam-hook">
-                            Test your comprehensive knowledge and scenario-based skills required for this highly-valued certification.
+                            Practice exams grouped by this certification level.
                         </p>
                     </div>
 
-                    <!--
-                        Action Button: Links to a detail page.
-                        We pass the course name as a parameter in the URL.
-                    -->
-                    <a th:href="@{/exam/details(name=${courseName})}" class="btn secondary-cta">
-                        Start Practice
+                    <!-- Link to level details -->
+                    <a th:href="@{/exam/details(name=${entry.key})}" class="btn secondary-cta">
+                        Explore Exams
                     </a>
                 </div>
 
-                <!-- Placeholder Card for when no exams are found (optional) -->
-                <div class="exam-card" th:if="${#lists.isEmpty(allCertificationAvailable)}">
+                <!-- Placeholder for no exams -->
+                <div class="exam-card" th:if="${#maps.isEmpty(allCertificationAvailable)}">
                     <div class="card-icon"><i class="fas fa-frown"></i></div>
                     <div class="card-content">
                         <h3 class="exam-title">No Exams Found</h3>

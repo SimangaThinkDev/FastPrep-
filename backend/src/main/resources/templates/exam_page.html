@@ -85,13 +85,13 @@
         <h1 th:text="${title}" class="exam-title"></h1>
 
         <div class="progress">
-            Question <span id="currentQ">1</span> of <span id="totalQ" th:text="${questionsArray.length()}"></span>
+            Question <span id="currentQ">1</span> of <span id="totalQ" th:text="${#lists.size(questionsArray)}"></span>
         </div>
 
         <form id="examForm" th:action="@{/exam/submit}" method="post">
             <input type="hidden" name="examID" th:value="${examID}">
 
-            <!-- All questions will be rendered here (hidden except current) -->
+            <!-- Render all questions (only current visible via JS) -->
             <div th:each="q, iterStat : ${questionsArray}"
                  class="question-card"
                  th:classappend="${iterStat.index == 0} ? 'active' : ''"
@@ -99,7 +99,7 @@
 
                 <div class="question-header">
                 <span class="question-number">
-                    Question <span th:text="${q.get('question_number') - 1}"></span>
+                    Question <span class="question-number-dynamic"></span>
                 </span>
                     <span class="question-type"
                           th:text="${q.get('is_multiple_choice')} ? 'Multiple Choice' : 'Single Choice'">
@@ -109,8 +109,7 @@
                 <p class="question-text" th:text="${q.get('question_text')}"></p>
 
                 <div class="options-list">
-                    <label class="option-item"
-                           th:each="opt : ${q.get('options')}">
+                    <label class="option-item" th:each="opt : ${q.get('options')}">
 
                         <!-- Single choice: radio -->
                         <input type="radio"
@@ -141,6 +140,7 @@
     </section>
 
 
+
     <footer class="main-footer">
         <div class="footer-content">
             <p class="footer-copyright">
@@ -166,7 +166,15 @@
     function showQuestion(index) {
         cards.forEach((card, i) => {
             card.classList.toggle('active', i === index);
+
+            // Update per-card question number dynamically
+            const numberSpan = card.querySelector('.question-number-dynamic');
+            if (numberSpan) {
+                numberSpan.textContent = index + 1;
+            }
         });
+
+        // Update top "current question"
         currentQSpan.textContent = index + 1;
 
         // Show submit button on last question

@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FastPrep+ - Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/details.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Playwrite+NZ+Guides&display=swap" rel="stylesheet">
+    <style>
+        /* Pagination Container */
+        .pagination-controls {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center;
+            margin-top: 20px;
+            gap: 15px; /* Space between buttons and info */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Buttons */
+        .pagination-controls button {
+            background-color: rgb(87, 87, 23); /* Green button */
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .pagination-controls button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .pagination-controls button:hover:not(:disabled) {
+            background-color: rgb(128, 128, 17);
+        }
+
+        /* Page Info Text */
+        .pagination-controls #page-info {
+            font-weight: bold;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="header-content">
+            <a th:href="@{/}" class="logo-text" style="text-decoration: none;">
+                FastPrep
+            </a>
+            <box-icon name='plus-medical'></box-icon>
+        </div>
+    </header>
+
+    <section class="header-section">
+        <div class="details-header">
+            <!-- Assuming you add the course title back to the model for clarity -->
+            <h2 class="course-title" th:text="${courseTitle} ?: 'Selected Certification'">AWS Solutions Architect - Associate</h2>
+            <p class="exam-count">
+                <span th:text="${numExams}">3</span> Practice Exams Available
+            </p>
+        </div>
+    </section>
+
+    <div class="container exam-details-content">
+
+        <!-- Individual Exam List -->
+        <div class="individual-exam-list" id="exam-list">
+
+            <!-- Loop over the list of available exams for course -->
+            <div class="exam-item-card" th:each="exam, examStat : ${exams}" th:data-index="${examStat.index}">
+                <div class="item-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+
+                <div class="item-content">
+                    <!-- Display the exam title dynamically -->
+                    <h3 class="item-title" th:text="'Practice Exam ' + ${exam.metadata.examId}">Practice Exam 1</h3>
+
+                    <p class="item-metrics">
+                        <!-- Number of questions -->
+                        <i class="fas fa-question-circle"></i>
+                        <span th:text="${#lists.size(exam.questions)}">50</span> Questions &nbsp;&bull;&nbsp;
+
+                        <!-- Estimated duration (still static for now) -->
+                        <i class="fas fa-clock"></i>
+                        <span>180</span> Minutes
+                    </p>
+                </div>
+
+                <!-- Start Practice Button -->
+                <a th:href="@{/exam/start(course=${exam.metadata.courseName}, examNum=${exam.metadata.examId})}"
+                   id="secondary-cta">
+                    Start Practice
+                </a>
+            </div>
+
+            <!-- No Exams Found message -->
+            <div class="no-exams-message" th:if="${#lists.isEmpty(exams)}">
+                <p><i class="fas fa-info-circle"></i> No practice exams found for this course yet.</p>
+            </div>
+
+        </div>
+
+        <!-- Pagination Controls -->
+        <div th:unless="${#lists.isEmpty(exams)}" class="pagination-controls">
+            <button id="prev-btn" disabled>Previous</button>
+            <span id="page-info"></span>
+            <button id="next-btn">Next</button>
+        </div>
+
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p class="footer-copyright">
+                &copy; 2025 FastPrep+. All rights reserved.
+            </p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <span class="link-separator">|</span>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const exams = Array.from(document.querySelectorAll('#exam-list .exam-item-card'));
+        const pageSize = 5; // show 5 exams at a time
+        let currentPage = 0;
+        const totalPages = Math.ceil(exams.length / pageSize);
+
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const pageInfo = document.getElementById('page-info');
+
+        function showPage(page) {
+            const start = page * pageSize;
+            const end = start + pageSize;
+
+            exams.forEach((exam, index) => {
+                exam.style.display = (index >= start && index < end) ? 'block' : 'none';
+            });
+
+            pageInfo.textContent = `Page ${page + 1} of ${totalPages}`;
+            prevBtn.disabled = page === 0;
+            nextBtn.disabled = page === totalPages - 1;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 0) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentPage < totalPages - 1) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        });
+
+        // Initialize
+        showPage(currentPage);
+    });
+</script>
+
+</html>
