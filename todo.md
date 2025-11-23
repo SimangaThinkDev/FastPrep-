@@ -17,20 +17,20 @@
 
 1. Before the user takes the exam, Show them the rules as an official assignment would
     - [ ] The time limit
-    - [ ] assurance of test environment, i.e write on a laptop, make sure internet is stable
+    - [ ] assurance of test environment, i.e, write on a laptop, make sure internet is stable
     - [ ] pledge from user to not use any AI throughout the exam, but this should be more focused on the user's honesty to themselves. If they are cheating in practice, then what is their plan for the actual exam?
     - [ ] ... and many more you can find
 
 2. Constraints on the exam page
    - [ ] Make sure the user cannot copy text on the page they are currently working on
    - [ ] The user should be given warnings for visiting other tabs
-   - [ ] Strict exam timing should be implemented. i.e 180 minutes is 180 minutes
+   - [ ] Strict exam timing should be implemented. i.e, 180 minutes is 180 minutes
 
 
 ### Migration to a database
 
 1. Initial Part
-    - [ ] Choose a database engine that fits the application's use case
+    - [ ] Choose a database engine that fits the application's use case -- Document the research behind this
     - [ ] Design A schema specific to the engine
     - [ ] Choose between an ORM system to use, hopefully not lemnik again :(
 
@@ -47,5 +47,18 @@
     - [ ] Write integration tests
     - [ ] start integrating the apps functionality with the database logic
     - [ ] Test, Refactor, Improve
+
+### Enhance user feedback
+
+1. Collect User performance on exams
+    - [ ] Collect how a user performed for a specific practice exam
+    - [ ] Store data to use in analytics
+
+2. Provide User Feedback
+    - [ ] Leave the after exam general feedback as is but add a message to hint the user at checking their emails.
+    - [ ] Use gemini to generate a constructive feedback for the user
+    - [ ] Design the email response
+    - [ ] Use Amazon SNS to send the feedback notification
+    - [ ] Attach a Google form to collect reverse feedback...
 
 ## Add a new timeline here

@@ -2,7 +2,14 @@
     "exam_metadata": {
         "layout": "exam",
         "title": "Practice Exam 23",
-        "exam_id": 23
+        "exam_id": 23,
+        "courseName": "AWS Cloud Practitioner",
+        "difficulty": 1,
+        "tags": [
+            "aws",
+            "cloud"
+        ],
+        "description": "Introduction exam"
     },
     "questions": [
         {
