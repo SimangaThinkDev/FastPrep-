@@ -47,6 +47,56 @@
             font-size: 14px;
             color: #333;
         }
+        
+        /* Exam Card Layout */
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .item-title {
+            margin: 0;
+            flex-grow: 1;
+        }
+        
+        .item-metrics {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        .btn.secondary-cta {
+            padding: 8px 16px;
+            font-size: 14px;
+            margin-left: 15px;
+        }
+        
+        .coming-soon-message {
+            text-align: center;
+            padding: 40px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .coming-soon-message i {
+            font-size: 3em;
+            color: #ffa500;
+            margin-bottom: 20px;
+        }
+        
+        .coming-soon-message h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .coming-soon-message p {
+            color: #666;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
@@ -62,8 +112,8 @@
 
     <section class="header-section">
         <div class="details-header">
-            <!-- Assuming you add the course title back to the model for clarity -->
             <h2 class="course-title" th:text="${courseTitle} ?: 'Selected Certification'">AWS Solutions Architect - Associate</h2>
+            <p class="exam-level" th:text="'Level: ' + ${examLevel} ?: 'Foundational'">Level: Foundational</p>
             <p class="exam-count">
                 <span th:text="${numExams}">3</span> Practice Exams Available
             </p>
@@ -81,31 +131,39 @@
                     <i class="fas fa-file-alt"></i>
                 </div>
 
-                <div class="item-content">
+                <div class="item-header">
                     <!-- Display the exam title dynamically -->
                     <h3 class="item-title" th:text="'Practice Exam ' + ${exam.metadata.examId}">Practice Exam 1</h3>
 
-                    <p class="item-metrics">
-                        <!-- Number of questions -->
-                        <i class="fas fa-question-circle"></i>
-                        <span th:text="${#lists.size(exam.questions)}">50</span> Questions &nbsp;&bull;&nbsp;
-
-                        <!-- Estimated duration (still static for now) -->
-                        <i class="fas fa-clock"></i>
-                        <span>180</span> Minutes
-                    </p>
+                    <!-- Start Practice Button -->
+                    <a th:href="@{/exam/instructions(examNum=${exam.metadata.examId})}"
+                       class="btn secondary-cta">
+                        Start Practice
+                    </a>
                 </div>
 
-                <!-- Start Practice Button -->
-                <a th:href="@{/exam/start(course=${exam.metadata.courseName}, examNum=${exam.metadata.examId})}"
-                   id="secondary-cta">
-                    Start Practice
-                </a>
+                <div class="item-metrics">
+                    <!-- Number of questions -->
+                    <i class="fas fa-question-circle"></i>
+                    <span th:text="${#lists.size(exam.questions)}">50</span> Questions &nbsp;&bull;&nbsp;
+
+                    <!-- Estimated duration (still static for now) -->
+                    <i class="fas fa-clock"></i>
+                    <span>180</span> Minutes
+                </div>
             </div>
 
             <!-- No Exams Found message -->
             <div class="no-exams-message" th:if="${#lists.isEmpty(exams)}">
-                <p><i class="fas fa-info-circle"></i> No practice exams found for this course yet.</p>
+                <div th:if="${comingSoon}" class="coming-soon-message">
+                    <i class="fas fa-hourglass-half"></i>
+                    <h3>Coming Soon!</h3>
+                    <p>We are currently not serving any practice exams for <strong th:text="${courseTitle}">this certification</strong>.</p>
+                    <p>Practice exams for this certification are in development. Check back soon!</p>
+                </div>
+                <div th:unless="${comingSoon}">
+                    <p><i class="fas fa-info-circle"></i> No practice exams found for this course yet.</p>
+                </div>
             </div>
 
         </div>

@@ -67,6 +67,73 @@
             font-size: 1.1em;
             color: #7f8c8d;
         }
+        
+        .answer-explanation {
+            margin-top: 20px;
+        }
+        
+        .option-item.correct {
+            background-color: #d4edda !important;
+            border-color: #28a745 !important;
+        }
+        
+        .option-item.incorrect {
+            background-color: #f8d7da !important;
+            border-color: #dc3545 !important;
+        }
+        
+        .option-item:disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+        
+        /* Exam Constraints */
+        .questions-container {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        .timer-display {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2em;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .warning-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .warning-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+        }
+        
+        .warning-content h3 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 
@@ -79,6 +146,20 @@
             <box-icon name='plus-medical'></box-icon>
         </div>
     </header>
+
+    <!-- Timer Display -->
+    <div class="timer-display" id="timerDisplay">
+        Time Remaining: <span id="timeRemaining">03:00:00</span>
+    </div>
+    
+    <!-- Warning Modal -->
+    <div class="warning-modal" id="warningModal">
+        <div class="warning-content">
+            <h3>⚠️ Exam Violation Warning</h3>
+            <p id="warningMessage">You have left the exam page. Please return focus to continue.</p>
+            <button onclick="closeWarning()" class="btn btn-primary">Return to Exam</button>
+        </div>
+    </div>
 
     <section class="questions-container">
 
@@ -95,7 +176,9 @@
             <div th:each="q, iterStat : ${questionsArray}"
                  class="question-card"
                  th:classappend="${iterStat.index == 0} ? 'active' : ''"
-                 th:data-qnum="${iterStat.index + 1}">
+                 th:data-qnum="${iterStat.index + 1}"
+                 th:data-correct-answer="${q.get('correct_answer_keys')}"
+                 th:data-correct-answer-text="${q.get('correct_answer_text')}">
 
                 <div class="question-header">
                 <span class="question-number">
@@ -172,6 +255,20 @@
             }
         });
 
+        // Reset current question state
+        const currentCard = cards[index];
+        const inputs = currentCard.querySelectorAll('input');
+        inputs.forEach(input => input.disabled = false);
+        
+        const options = currentCard.querySelectorAll('.option-item');
+        options.forEach(option => {
+            option.style.backgroundColor = '';
+            option.style.borderColor = '';
+        });
+        
+        const explanation = currentCard.querySelector('.answer-explanation');
+        if (explanation) explanation.remove();
+
         // Update top "current question"
         currentQSpan.textContent = index + 1;
 
@@ -196,9 +293,72 @@
             return;
         }
 
+        // Show answer if showAnswers is enabled
+        if (showAnswers === true) {
+            showAnswerForCurrentQuestion();
+            return;
+        }
+
         if (currentIndex < cards.length - 1) {
             currentIndex++;
             showQuestion(currentIndex);
+        }
+    }
+
+    function showAnswerForCurrentQuestion() {
+        const currentCard = cards[currentIndex];
+        const correctAnswerKeys = currentCard.dataset.correctAnswer;
+        const correctAnswerText = currentCard.dataset.correctAnswerText;
+        
+        // Disable all inputs
+        const inputs = currentCard.querySelectorAll('input');
+        inputs.forEach(input => input.disabled = true);
+        
+        // Highlight correct and incorrect answers
+        const options = currentCard.querySelectorAll('.option-item');
+        options.forEach(option => {
+            const input = option.querySelector('input');
+            const optionKey = input.value;
+            const isCorrect = correctAnswerKeys.includes(optionKey);
+            const isSelected = input.checked;
+            
+            if (isCorrect) {
+                option.style.backgroundColor = '#d4edda';
+                option.style.borderColor = '#28a745';
+            } else if (isSelected) {
+                option.style.backgroundColor = '#f8d7da';
+                option.style.borderColor = '#dc3545';
+            }
+        });
+        
+        // Show explanation
+        let explanationDiv = currentCard.querySelector('.answer-explanation');
+        if (!explanationDiv) {
+            explanationDiv = document.createElement('div');
+            explanationDiv.className = 'answer-explanation';
+            explanationDiv.innerHTML = `
+                <div style="margin-top: 20px; padding: 15px; background-color: #e7f3ff; border-left: 4px solid #007bff; border-radius: 4px;">
+                    <strong>Correct Answer:</strong> ${correctAnswerKeys}<br>
+                    <strong>Explanation:</strong> ${correctAnswerText}
+                </div>
+            `;
+            currentCard.appendChild(explanationDiv);
+        }
+        
+        // Change button text
+        nextBtn.textContent = currentIndex < cards.length - 1 ? 'Next Question →' : 'Finish Exam';
+        nextBtn.onclick = proceedToNext;
+    }
+    
+    function proceedToNext() {
+        if (currentIndex < cards.length - 1) {
+            currentIndex++;
+            showQuestion(currentIndex);
+            nextBtn.textContent = 'Next Question →';
+            nextBtn.onclick = nextQuestion;
+        } else {
+            // Submit the exam
+            document.getElementById('examForm').submit();
         }
     }
 
@@ -212,6 +372,101 @@
 
     // Initialize
     showQuestion(0);
+    
+    // Store showAnswers setting for potential future use
+    const showAnswers = [[${showAnswers}]];
+    
+    // Exam Constraints Implementation
+    let examStartTime = Date.now();
+    let examDuration = 180 * 60 * 1000; // 180 minutes in milliseconds
+    let warningCount = 0;
+    let examTimer;
+    
+    // Start exam timer
+    function startExamTimer() {
+        examTimer = setInterval(function() {
+            const elapsed = Date.now() - examStartTime;
+            const remaining = examDuration - elapsed;
+            
+            if (remaining <= 0) {
+                clearInterval(examTimer);
+                alert('Time is up! Submitting exam automatically.');
+                document.getElementById('examForm').submit();
+                return;
+            }
+            
+            const hours = Math.floor(remaining / (1000 * 60 * 60));
+            const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+            
+            document.getElementById('timeRemaining').textContent = 
+                String(hours).padStart(2, '0') + ':' + 
+                String(minutes).padStart(2, '0') + ':' + 
+                String(seconds).padStart(2, '0');
+        }, 1000);
+    }
+    
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    });
+    
+    // Disable common copy shortcuts
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && (e.key === 'c' || e.key === 'a' || e.key === 's' || e.key === 'p')) {
+            e.preventDefault();
+            return false;
+        }
+        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+    
+    // Tab/Window focus monitoring
+    let isExamFocused = true;
+    
+    window.addEventListener('blur', function() {
+        isExamFocused = false;
+        warningCount++;
+        showWarning('You have left the exam window. Warning #' + warningCount);
+    });
+    
+    window.addEventListener('focus', function() {
+        isExamFocused = true;
+    });
+    
+    // Visibility change detection (tab switching)
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            warningCount++;
+            showWarning('You have switched tabs or minimized the window. Warning #' + warningCount);
+        }
+    });
+    
+    function showWarning(message) {
+        document.getElementById('warningMessage').textContent = message;
+        document.getElementById('warningModal').style.display = 'flex';
+        
+        if (warningCount >= 3) {
+            document.getElementById('warningMessage').textContent += 
+                ' You have received 3 warnings. The exam will be submitted automatically.';
+            setTimeout(function() {
+                document.getElementById('examForm').submit();
+            }, 5000);
+        }
+    }
+    
+    function closeWarning() {
+        document.getElementById('warningModal').style.display = 'none';
+    }
+    
+    // Start the timer when page loads
+    startExamTimer();
+    
+    // Make closeWarning globally accessible
+    window.closeWarning = closeWarning;
 </script>
 
 </html>

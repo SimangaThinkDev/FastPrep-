@@ -26,70 +26,76 @@
     <section class="hero-section">
         <div class="container hero-container">
             <div class="hero-text-container">
-                <h1>Master Your Skills: Practice Exams</h1>
+                <h1>AWS Certification Practice Exams</h1>
                 <p>
-                    Validate your readiness with our full-length, simulated certification tests.
-                    We currently offer <strong th:text="${numAvailableCourses}">3</strong> distinct courses to choose from.
+                    Complete catalog of AWS certification practice tests organized by difficulty level.
+                    From foundational to specialty - master your AWS skills step by step.
                 </p>
-                <a href="#exam-grid" class="btn primary-cta">Start Exploring Exams</a>
+                <a href="#exam-grid" class="btn primary-cta">Explore All Exams</a>
             </div>
             <div class="hero-image-placeholder">
-                <img src="/images/success-graphic.jpg" alt="Graphic representing success and achievement.">
+                <img src="/images/success-graphic.jpg" alt="AWS certification success">
             </div>
         </div>
     </section>
 
-    <!-- 2. Main Exam Catalogue: The Card Grid -->
+    <!-- 2. AWS Exam Levels -->
     <section id="exam-grid" class="exam-catalogue-section">
         <div class="container">
-            <h2 class="section-title">Available Certification Practice Tests</h2>
-
-            <div class="exam-catalogue-grid">
-
-                <!-- Loop over levels (Map<String, Long>) -->
-                <div class="exam-card" th:each="entry, entryStat : ${allCertificationAvailable}">
-                    <div class="card-icon">
-                        <i class="fas"
-                           th:classappend="${entryStat.index % 3 == 0} ? 'fa-clipboard-list' :
-                                     (${entryStat.index % 3 == 1} ? 'fa-award' : 'fa-star')">
-                        </i>
-                    </div>
-                    <div class="card-content">
-                        <!-- Level name -->
-                        <h3 class="exam-title" th:text="${entry.key}">AWS Cloud Practitioner</h3>
-
-                        <!-- Number of exams in this level -->
-                        <div class="exam-details">
-                        <span class="detail-item">
-                            <i class="fas fa-question-circle"></i>
-                            <strong th:text="${entry.value}">10</strong> Exams
-                        </span>
+            <h2 class="section-title">AWS Certification Pathway</h2>
+            
+            <!-- Loop through each exam level -->
+            <div th:each="levelEntry : ${examsByLevel}" class="level-section">
+                <h3 class="level-title" th:text="${levelEntry.key.displayName} + ' Level'">Foundational Level</h3>
+                <p class="level-description" th:switch="${levelEntry.key.name()}">
+                    <span th:case="'FOUNDATIONAL'">Entry-level certification covering basic AWS cloud concepts</span>
+                    <span th:case="'ASSOCIATE'">Intermediate certifications for specific AWS roles and services</span>
+                    <span th:case="'PROFESSIONAL'">Advanced certifications for senior-level positions</span>
+                    <span th:case="'SPECIALTY'">Expert-level certifications for specialized AWS domains</span>
+                </p>
+                
+                <div class="exam-catalogue-grid">
+                    <!-- Loop through exams in this level -->
+                    <div class="exam-card" th:each="exam : ${levelEntry.value}">
+                        <div class="card-icon">
+                            <i class="fas" th:classappend="${exam.available} ? 'fa-check-circle' : 'fa-clock'"></i>
                         </div>
-
-                        <p class="exam-hook">
-                            Practice exams grouped by this certification level.
-                        </p>
+                        <div class="card-content">
+                            <h4 class="exam-title" th:text="${exam.name}">AWS Cloud Practitioner</h4>
+                            
+                            <div class="exam-details" th:if="${exam.available}">
+                                <span class="detail-item">
+                                    <i class="fas fa-question-circle"></i>
+                                    <strong th:text="${availableExamCounts[exam.name]} ?: 0">23</strong> Practice Exams
+                                </span>
+                            </div>
+                            
+                            <div class="exam-details" th:unless="${exam.available}">
+                                <span class="detail-item coming-soon">
+                                    <i class="fas fa-hourglass-half"></i>
+                                    Coming Soon
+                                </span>
+                            </div>
+                            
+                            <p class="exam-hook" th:if="${exam.available}">
+                                Ready to practice! Start your preparation journey.
+                            </p>
+                            <p class="exam-hook" th:unless="${exam.available}">
+                                Currently not serving any practice exams for this certification.
+                            </p>
+                        </div>
+                        
+                        <a th:if="${exam.available}" 
+                           th:href="@{/exam/details(name=${exam.name})}" 
+                           class="btn secondary-cta">
+                            View Practice Exams
+                        </a>
+                        <span th:unless="${exam.available}" 
+                              class="btn secondary-cta disabled">
+                            Not Available
+                        </span>
                     </div>
-
-                    <!-- Link to level details -->
-                    <a th:href="@{/exam/details(name=${entry.key})}" class="btn secondary-cta">
-                        Explore Exams
-                    </a>
                 </div>
-
-                <!-- Placeholder for no exams -->
-                <div class="exam-card" th:if="${#maps.isEmpty(allCertificationAvailable)}">
-                    <div class="card-icon"><i class="fas fa-frown"></i></div>
-                    <div class="card-content">
-                        <h3 class="exam-title">No Exams Found</h3>
-                        <p class="exam-details">Please check back later.</p>
-                        <p class="exam-hook">
-                            We are working hard to prepare new content. If you expected to see exams here, please contact support.
-                        </p>
-                    </div>
-                    <a href="#" class="btn secondary-cta" style="pointer-events: none; opacity: 0.6;">Contact Support</a>
-                </div>
-
             </div>
         </div>
     </section>

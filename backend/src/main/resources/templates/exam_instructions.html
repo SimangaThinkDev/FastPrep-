@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FastPrep+ - Exam Instructions</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/instructions.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Playwrite+NZ+Guides&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="header-content">
+            <a th:href="@{/}" class="logo-text" style="text-decoration: none;">
+                FastPrep
+            </a>
+            <box-icon name='plus-medical'></box-icon>
+        </div>
+    </header>
+
+    <div class="instructions-container">
+        <div class="exam-info">
+            <h1 th:text="${examTitle}">Practice Exam 1</h1>
+            <p><strong th:text="${courseName}">AWS Cloud Practitioner</strong></p>
+            <p>Time Limit: <strong>180 minutes</strong> | Questions: <strong th:text="${questionCount}">65</strong></p>
+        </div>
+
+        <div class="rules-section">
+            <h2>📋 Exam Instructions & Rules</h2>
+            
+            <div class="rule-item">
+                <i class="fas fa-clock rule-icon"></i>
+                <div>
+                    <strong>Time Management:</strong> You have exactly 180 minutes to complete this exam. The timer will start immediately when you begin and cannot be paused.
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <i class="fas fa-laptop rule-icon"></i>
+                <div>
+                    <strong>Test Environment:</strong> Ensure you're using a laptop/desktop with stable internet connection. Mobile devices are not recommended for optimal experience.
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <i class="fas fa-window-close rule-icon"></i>
+                <div>
+                    <strong>Browser Focus:</strong> Avoid switching tabs or minimizing the browser. You'll receive warnings for leaving the exam page.
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <i class="fas fa-ban rule-icon"></i>
+                <div>
+                    <strong>No External Help:</strong> Do not use search engines, AI assistants, or any external resources. This defeats the purpose of practice.
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <i class="fas fa-save rule-icon"></i>
+                <div>
+                    <strong>Auto-Save:</strong> Your answers are automatically saved. You can review and change answers before final submission.
+                </div>
+            </div>
+        </div>
+
+        <div class="pledge-section">
+            <h3>🤝 Practice Integrity Pledge</h3>
+            <p>Remember: <em>If you cheat during practice, what's your plan for the actual exam?</em></p>
+            <p>This practice session is designed to help you identify knowledge gaps and build confidence. Using external help will only give you false confidence and leave you unprepared for the real certification exam.</p>
+        </div>
+
+        <div class="settings-section">
+            <h3>⚙️ Exam Settings</h3>
+            
+            <div class="checkbox-item">
+                <input type="checkbox" id="showAnswers" name="showAnswers" value="true">
+                <label for="showAnswers">
+                    <strong>Show answers after each question</strong><br>
+                    <small>Default: Show all answers at the end of the exam</small>
+                </label>
+            </div>
+            
+            <div class="checkbox-item">
+                <input type="checkbox" id="confirmRules" name="confirmRules" required>
+                <label for="confirmRules">
+                    <strong>I understand and agree to follow all exam rules</strong> *
+                </label>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a th:href="@{/exam/details(name=${courseName})}" class="btn btn-secondary">
+                ← Back to Exam List
+            </a>
+            
+            <button type="button" id="startExamBtn" class="btn btn-primary" disabled>
+                Start Exam →
+            </button>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p class="footer-copyright">
+                &copy; 2025 FastPrep+. All rights reserved.
+            </p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <span class="link-separator">|</span>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const confirmRules = document.getElementById('confirmRules');
+            const startExamBtn = document.getElementById('startExamBtn');
+            
+            confirmRules.addEventListener('change', function() {
+                startExamBtn.disabled = !this.checked;
+            });
+            
+            startExamBtn.addEventListener('click', function() {
+                if (confirmRules.checked) {
+                    const showAnswers = document.getElementById('showAnswers').checked;
+                    const examUrl = `/exam/start?examNum=${examId}&showAnswers=${showAnswers}`;
+                    window.location.href = examUrl;
+                }
+            });
+        });
+        
+        // Pass exam data to JavaScript
+        const examId = [[${examId}]];
+    </script>
+
+</body>
+</html>

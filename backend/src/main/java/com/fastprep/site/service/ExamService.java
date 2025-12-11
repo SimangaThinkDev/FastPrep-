@@ -1,7 +1,8 @@
 package com.fastprep.site.service;
 
 import com.fastprep.site.model.Exam;
-import com.fastprep.site.model.ExamRepository;
+import com.fastprep.site.model.ExamLevel;
+import com.fastprep.site.repository.ExamRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,9 +36,14 @@ public class ExamService {
         return examRepository.findByMetadataCourseName(courseName);
     }
 
-    // Get exams by numeric level (for ordering / pagination)
-    public List<Exam> getExamsByLevel(int level) {
+    // Get exams by level
+    public List<Exam> getExamsByLevel(ExamLevel level) {
         return examRepository.findByMetadataLevel(level);
+    }
+
+    // Get exams by numeric difficulty (for backward compatibility)
+    public List<Exam> getExamsByDifficulty(int difficulty) {
+        return examRepository.findByMetadataDifficulty(difficulty);
     }
 
     // Get all exams ordered by level and difficulty

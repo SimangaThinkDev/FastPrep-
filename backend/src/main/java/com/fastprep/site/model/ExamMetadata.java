@@ -11,11 +11,12 @@ public class ExamMetadata {
 
     private String title;
 
-    private String courseName;  // previously was level string
+    private String courseName;
 
-    private int level;          // numeric level for ordering
+    private ExamLevel level;
 
-    private int difficulty;     // numeric difficulty now
+    @Field("difficulty")
+    private int difficulty;  // Keep for backward compatibility, will be converted to level
 
     private List<String> tags;
 
@@ -31,11 +32,32 @@ public class ExamMetadata {
     public String getCourseName() { return courseName; }
     public void setCourseName(String courseName) { this.courseName = courseName; }
 
-    public int getLevel() { return level; }
-    public void setLevel(int level) { this.level = level; }
+    public ExamLevel getLevel() { 
+        if (level == null && difficulty > 0) {
+            try {
+                level = ExamLevel.fromNumeric(difficulty);
+            } catch (IllegalArgumentException e) {
+                level = null;
+            }
+        }
+        if (level == null && courseName != null) {
+            level = ExamLevel.fromCourseName(courseName);
+        }
+        return level != null ? level : ExamLevel.FOUNDATIONAL; 
+    }
+    public void setLevel(ExamLevel level) { this.level = level; }
 
     public int getDifficulty() { return difficulty; }
-    public void setDifficulty(int difficulty) { this.difficulty = difficulty; }
+    public void setDifficulty(int difficulty) { 
+        this.difficulty = difficulty;
+        if (difficulty > 0) {
+            try {
+                this.level = ExamLevel.fromNumeric(difficulty);
+            } catch (IllegalArgumentException e) {
+                this.level = ExamLevel.FOUNDATIONAL;
+            }
+        }
+    }
 
     public List<String> getTags() { return tags; }
     public void setTags(List<String> tags) { this.tags = tags; }
