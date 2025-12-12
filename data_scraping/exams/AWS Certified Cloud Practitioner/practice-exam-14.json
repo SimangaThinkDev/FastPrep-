@@ -9,7 +9,8 @@
             "aws",
             "cloud"
         ],
-        "description": "Introduction exam"
+        "description": "Introduction exam",
+        "level": "FOUNDATIONAL"
     },
     "questions": [
         {

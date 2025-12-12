@@ -8,7 +8,7 @@
     - [ ] The exams should simulate AWS's official exam pathway
     - [ ] separated to show the user where to start and where to end of
 
-2. Exam description
+2. Exam description ( Backlogged )
     - [ ] Every exam should have its own definite description
     - [ ] The average timing should also be researched for this
 
@@ -46,7 +46,7 @@
 4. Integration
     - [ ] Write integration tests
     - [ ] start integrating the apps functionality with the database logic
-    - [ ] Test, Refactor, Improve
+    - [ ] Test, Refactor, Improve (Not Done)
 
 ### Enhance user feedback
 

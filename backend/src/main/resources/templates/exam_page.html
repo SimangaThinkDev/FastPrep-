@@ -138,14 +138,6 @@
 </head>
 
 <body>
-    <header id="main-header">
-        <div class="header-content">
-            <a th:href="@{/}" class="logo-text" style="text-decoration: none;">
-                FastPrep
-            </a>
-            <box-icon name='plus-medical'></box-icon>
-        </div>
-    </header>
 
     <!-- Timer Display -->
     <div class="timer-display" id="timerDisplay">
@@ -222,19 +214,6 @@
 
     </section>
 
-    <footer class="main-footer">
-        <div class="footer-content">
-            <p class="footer-copyright">
-                &copy; 2025 FastPrep+. All rights reserved.
-            </p>
-            <div class="footer-links">
-                <a href="#" class="footer-link">Privacy Policy</a>
-                <span class="link-separator">|</span>
-                <a href="#" class="footer-link">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
-
 </body>
 
 <script>
@@ -292,6 +271,9 @@
             alert("Please select at least one option before proceeding.");
             return;
         }
+        
+        // Capture user answer before proceeding
+        captureUserAnswer(currentIndex);
 
         // Show answer if showAnswers is enabled
         if (showAnswers === true) {
@@ -357,7 +339,17 @@
             nextBtn.textContent = 'Next Question →';
             nextBtn.onclick = nextQuestion;
         } else {
-            // Submit the exam
+            // Compile final JSON and submit
+            const finalJson = compileFinalExamJson();
+            console.log('Final Exam JSON for Gemini:', JSON.stringify(finalJson, null, 2));
+            
+            // Add JSON to form as hidden field for backend processing
+            const hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'examResultJson';
+            hiddenInput.value = JSON.stringify(finalJson);
+            document.getElementById('examForm').appendChild(hiddenInput);
+            
             document.getElementById('examForm').submit();
         }
     }
@@ -373,8 +365,60 @@
     // Initialize
     showQuestion(0);
     
-    // Store showAnswers setting for potential future use
+    // Store showAnswers setting and exam data
     const showAnswers = [[${showAnswers}]];
+    const questionsArray = [[${questionsArray}]];
+    
+    // Track user answers for comprehensive feedback
+    let userAnswersData = {};
+    let examResultJson = {
+        exam_metadata: {
+            exam_id: [[${examID}]],
+            title: '[[${title}]]',
+            completed_at: null,
+            show_answers_mode: showAnswers
+        },
+        questions: [],
+        user_performance: {
+            total_questions: questionsArray.length,
+            answered_questions: 0,
+            unanswered_questions: 0
+        }
+    };
+    
+    // Function to capture user answers
+    function captureUserAnswer(questionIndex) {
+        const currentCard = cards[questionIndex];
+        const inputs = currentCard.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+        const selectedAnswers = [];
+        
+        inputs.forEach(input => {
+            if (input.checked) {
+                selectedAnswers.push(input.value);
+            }
+        });
+        
+        userAnswersData[questionIndex] = selectedAnswers;
+    }
+    
+    // Function to compile final JSON with user answers
+    function compileFinalExamJson() {
+        examResultJson.exam_metadata.completed_at = new Date().toISOString();
+        examResultJson.questions = questionsArray.map((question, index) => {
+            const userAnswer = userAnswersData[index] || [];
+            return {
+                ...question,
+                user_answer: userAnswer,
+                user_answered: userAnswer.length > 0
+            };
+        });
+        
+        examResultJson.user_performance.answered_questions = Object.keys(userAnswersData).length;
+        examResultJson.user_performance.unanswered_questions = 
+            questionsArray.length - examResultJson.user_performance.answered_questions;
+            
+        return examResultJson;
+    }
     
     // Exam Constraints Implementation
     let examStartTime = Date.now();
