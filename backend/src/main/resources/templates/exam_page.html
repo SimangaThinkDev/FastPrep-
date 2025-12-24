@@ -216,7 +216,11 @@
 
 </body>
 
-<script>
+<script th:inline="javascript">
+    // Store showAnswers setting and exam data FIRST
+    const showAnswers = [[${showAnswers}]];
+    const questionsArray = [[${questionsArray}]];
+    
     const cards = document.querySelectorAll('.question-card');
     const nextBtn = document.getElementById('nextBtn');
     const submitBtn = document.getElementById('submitBtn');
@@ -365,16 +369,12 @@
     // Initialize
     showQuestion(0);
     
-    // Store showAnswers setting and exam data
-    const showAnswers = [[${showAnswers}]];
-    const questionsArray = [[${questionsArray}]];
-    
     // Track user answers for comprehensive feedback
     let userAnswersData = {};
     let examResultJson = {
         exam_metadata: {
             exam_id: [[${examID}]],
-            title: '[[${title}]]',
+            title: [[${title}]],
             completed_at: null,
             show_answers_mode: showAnswers
         },

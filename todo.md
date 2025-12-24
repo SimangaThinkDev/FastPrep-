@@ -61,4 +61,57 @@
     - [ ] Use Amazon SNS to send the feedback notification
     - [ ] Attach a Google form to collect reverse feedback...
 
+## AI-Powered Features & User Management
+
+#### US-001: Gemini Integration for Performance Feedback
+**As a** student preparing for AWS certification  
+**I want** to receive AI-powered feedback on my exam performance  
+**So that** I can understand my strengths and weaknesses and get personalized study recommendations
+
+**Acceptance Criteria:**
+- [ ] System sends exam results to Gemini AI after completion
+- [ ] AI analyzes performance patterns and knowledge gaps
+- [ ] User receives detailed feedback with study recommendations
+- [ ] Feedback includes specific topic areas to focus on
+- [ ] Integration handles API errors gracefully
+
+#### US-002: User Authentication with Amazon Cognito
+**As a** platform user  
+**I want** to securely sign up and log in to my account  
+**So that** I can track my progress and access personalized features
+
+**Acceptance Criteria:**
+- [ ] Users can register with email/password via Cognito
+- [ ] Users can log in with existing credentials
+- [ ] Session management with secure token handling
+- [ ] Password reset functionality
+- [ ] Social login options (Google, Facebook) if needed
+- [ ] Proper error handling for authentication failures
+
+#### US-003: User Dashboard with Analytics
+**As a** registered user  
+**I want** to view my exam history and performance analytics  
+**So that** I can track my progress and identify areas for improvement
+
+**Acceptance Criteria:**
+- [ ] Dashboard shows exam completion history
+- [ ] Mock analytics display score trends over time
+- [ ] Visual charts for performance by topic/domain
+- [ ] Progress indicators toward certification readiness
+- [ ] Quick access to retake exams or start new ones
+- [ ] Responsive design for mobile and desktop
+
+#### US-004: Gemini Feedback History & Logging
+**As a** user who has taken multiple exams  
+**I want** to access my previous AI feedback reports  
+**So that** I can review detailed performance insights and track my improvement over time
+
+**Acceptance Criteria:**
+- [ ] System stores all Gemini feedback responses
+- [ ] Users can view chronological list of feedback reports
+- [ ] Each report shows exam date, score, and AI insights
+- [ ] Search/filter functionality for feedback history
+- [ ] Export functionality for personal study notes
+- [ ] Feedback comparison between different exam attempts
+
 ## Add a new timeline here

@@ -5,61 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16296d1b-e801-400d-a772-8d4489715606" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/backend/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/controller/WebServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/controller/WebServiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/model/ExamMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/model/ExamMetadata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/service/ExamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/service/ExamService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/service/GradingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/service/GradingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/util/RequestUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/util/RequestUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/exam_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/exam_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-1.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-10.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-10.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-11.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-11.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-12.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-12.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-13.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-13.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-14.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-14.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-15.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-15.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-16.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-16.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-17.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-17.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-18.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-18.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-19.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-19.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-2.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-20.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-20.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-21.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-21.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-22.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-22.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-23.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-23.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-3.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-4.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-5.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-6.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-6.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-7.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-7.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-8.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-8.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-9.json" beforeDir="false" afterPath="$PROJECT_DIR$/data_scraping/exams/AWS Certified Cloud Practitioner/practice-exam-9.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/load_questions_to_db.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-1.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-10.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-11.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-12.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-13.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-14.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-15.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-16.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-17.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-18.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-19.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-2.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-20.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-21.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-22.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-23.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-3.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-4.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-5.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-6.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-7.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-8.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/practice-exams/practice-exam-9.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scraping/scraper.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo.md" beforeDir="false" afterPath="$PROJECT_DIR$/todo.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schema.sql" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,10 +50,12 @@
     "Application.TestCode.executor": "Run",
     "DefaultHtmlFileTemplate": "HTML File",
     "JUnit.BackendApplicationTests.contextLoads.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHELLCHECK.PATH": "/home/innocent/.local/share/JetBrains/IdeaIC2025.2/Shell Script/shellcheck",
+    "Spring Boot.Application.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Modules",
@@ -127,7 +81,7 @@
       <visibility group="Run configurations" flag="true" />
     </myKeys>
   </component>
-  <component name="RunManager" selected="Application.Application">
+  <component name="RunManager" selected="Spring Boot.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.fastprep.site.Application" />
       <module name="backend" />
@@ -170,12 +124,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
+      <module name="backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.fastprep.site.Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.fastprep.site.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.Application" />
         <item itemvalue="Application.Application" />
         <item itemvalue="Application.TestCode" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-cffe25b9f5b3-intellij.indexing.shared.core-IU-253.28294.334" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

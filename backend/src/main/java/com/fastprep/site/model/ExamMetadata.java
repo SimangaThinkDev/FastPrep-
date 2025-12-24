@@ -16,7 +16,7 @@ public class ExamMetadata {
     private ExamLevel level;
 
     @Field("difficulty")
-    private int difficulty;  // Keep for backward compatibility, will be converted to level
+    private int difficulty;  // Keeping this for backward compatibility, will be converted to level
 
     private List<String> tags;
 
