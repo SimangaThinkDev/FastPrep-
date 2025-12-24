@@ -85,7 +85,6 @@
 - [ ] Users can log in with existing credentials
 - [ ] Session management with secure token handling
 - [ ] Password reset functionality
-- [ ] Social login options (Google, Facebook) if needed
 - [ ] Proper error handling for authentication failures
 
 #### US-003: User Dashboard with Analytics

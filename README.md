@@ -113,14 +113,130 @@ FastPrep/
 - **Performance Analytics**: Detailed progress tracking and weak area identification
 - **Social Features**: Study groups and competitive leaderboards
 
-## 🚦 Getting Started
+## 🚦 Developer Setup
 
-1. **Prerequisites**: Java 17+, MongoDB, Maven
-2. **Database Setup**: Import JSON exam files to MongoDB
-3. **Configuration**: Update MongoDB connection settings
-4. **Build**: `mvn clean install`
-5. **Run**: `mvn spring-boot:run`
-6. **Access**: Navigate to `http://localhost:8080`
+### Prerequisites
+- **Java 17+** (OpenJDK recommended)
+- **Maven 3.6+**
+- **MongoDB 4.4+** (Community Edition)
+- **Git**
+
+### 1. Clone Repository
+```bash
+git clone <repository-url>
+cd FastPrep-
+```
+
+### 2. MongoDB Setup
+
+#### Install MongoDB
+```bash
+# Ubuntu/Debian
+sudo apt-get install mongodb
+
+# macOS (using Homebrew)
+brew install mongodb-community
+
+# Windows: Download from https://www.mongodb.com/try/download/community
+```
+
+#### Start MongoDB Service
+```bash
+# Ubuntu/Debian
+sudo systemctl start mongod
+sudo systemctl enable mongod
+
+# macOS
+brew services start mongodb-community
+
+# Windows: Start as Windows Service or run mongod.exe
+```
+
+#### Verify MongoDB is Running
+```bash
+mongo --eval "db.adminCommand('ismaster')"
+# Should return connection info without errors
+```
+
+### 3. Load Exam Data
+
+#### Make Script Executable
+```bash
+cd data_scraping
+chmod +x load_exams_to_mongo.sh
+```
+
+#### Run Data Loading Script
+```bash
+./load_exams_to_mongo.sh
+```
+
+**Expected Output:**
+```
+----------------------------------------
+Importing ./exams/AWS Certified Cloud Practitioner/exam_1.json ...
+✔ Successfully imported ./exams/AWS Certified Cloud Practitioner/exam_1.json
+...
+ALL EXAMS IMPORTED SUCCESSFULLY!
+```
+
+#### Verify Data Import
+```bash
+mongo
+> use examdb
+> db.exams.count()
+# Should return 23 (number of exam files)
+> db.exams.findOne()
+# Should display a sample exam document
+```
+
+### 4. Application Configuration
+
+#### Update MongoDB Connection (if needed)
+Edit `backend/src/main/resources/application.properties`:
+```properties
+spring.data.mongodb.database=examdb
+spring.data.mongodb.host=localhost
+spring.data.mongodb.port=27017
+```
+
+### 5. Build and Run
+
+```bash
+cd backend
+
+# Build project
+./mvnw clean install
+
+# Run application
+./mvnw spring-boot:run
+```
+
+### 6. Access Application
+
+Open browser and navigate to: `http://localhost:8080`
+
+### 🔧 Troubleshooting
+
+**MongoDB Connection Issues:**
+- Ensure MongoDB service is running: `sudo systemctl status mongod`
+- Check port 27017 is not blocked: `netstat -an | grep 27017`
+
+**Data Loading Issues:**
+- Verify `mongoimport` is installed: `which mongoimport`
+- Check JSON file format in `data_scraping/exams/AWS Certified Cloud Practitioner/`
+
+**Application Startup Issues:**
+- Verify Java version: `java -version` (should be 17+)
+- Check Maven version: `mvn -version` (should be 3.6+)
+- Review logs for specific error messages
+
+### 📝 Development Notes
+
+- **Database**: `examdb` with collection `exams`
+- **Default Port**: 8080
+- **Hot Reload**: Use `./mvnw spring-boot:run` for automatic restart on changes
+- **Tests**: Run with `./mvnw test`
 
 ## 📊 Design Philosophy
 
