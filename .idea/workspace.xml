@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16296d1b-e801-400d-a772-8d4489715606" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/model/ExamMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/model/ExamMetadata.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/service/ExamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/service/ExamService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/service/GradingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/service/GradingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/util/RequestUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/fastprep/site/util/RequestUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/exam_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/exam_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,14 +50,15 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "SHELLCHECK.PATH": "/home/innocent/.local/share/JetBrains/IdeaIC2025.2/Shell Script/shellcheck",
+    "SHELLCHECK.PATH": "/home/kea/.var/app/com.jetbrains.IntelliJ-IDEA-Community/data/JetBrains/IdeaIC2025.3/Shell Script/shellcheck",
     "Spring Boot.Application.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Modules",
+    "last_opened_file_path": "/home/kea/Repos/FastPrep-",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "terminal"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -81,7 +78,7 @@
       <visibility group="Run configurations" flag="true" />
     </myKeys>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.fastprep.site.Application" />
       <module name="backend" />
@@ -140,7 +137,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.Application" />
         <item itemvalue="Application.Application" />
         <item itemvalue="Application.TestCode" />
       </list>
