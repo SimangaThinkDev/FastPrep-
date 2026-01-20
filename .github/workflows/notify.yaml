@@ -56,7 +56,7 @@ jobs:
                   <ul>
                   ${{ env.CHANGED_FILES }}
                   </ul>
-                  <p style="margin-top:20px;">Keep hacking! 💻🔥</p>
+                  <p style="margin-top:20px;">Simple reminder to pull latest changes to your local machine, to avoid conflicts</p>
                 </div>
               </body>
             </html>
