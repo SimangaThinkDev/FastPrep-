@@ -132,7 +132,7 @@ cd FastPrep-
 #### Install MongoDB
 ```bash
 # Ubuntu/Debian
-sudo apt-get install mongodb
+./install_mongo.sh
 
 # macOS (using Homebrew)
 brew install mongodb-community
