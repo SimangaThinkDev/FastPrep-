@@ -1,0 +1,82 @@
+:root {
+    --bg-color: #040a16;
+    --second-bg-color: #213448;
+    --third-bg-color: rgb(22, 30, 68);
+    --text-color: #ededed;
+    --main-color: #132fa8;
+}
+
+.auth-container {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-header h1 {
+    color: var(--second-bg-color);
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--bg-color);
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--second-bg-color);
+}
+
+.auth-button {
+    width: 100%;
+    padding: 14px;
+    background: var(--second-bg-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.auth-button:hover {
+    background: var(--bg-color);
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.auth-link a {
+    color: var(--second-bg-color);
+    text-decoration: none;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,55 @@
+/* Header Authentication Buttons */
+.header-content {
+    justify-content: space-between !important;
+    width: 100%;
+    max-width: none !important;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+}
+
+.auth-buttons, .user-menu {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.user-name {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.auth-btn {
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.login-btn {
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+}
+
+.login-btn:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+.signup-btn {
+    background-color: var(--main-color);
+    color: white;
+    border: 1px solid var(--main-color);
+}
+
+.signup-btn:hover {
+    background-color: #0d1e78;
+    border-color: #0d1e78;
+}

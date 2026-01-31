@@ -6,6 +6,9 @@
 
 .env
 
+# Amazon Q rules
+.amazonq/
+
 # BlueJ files
 *.ctxt
 
@@ -26,4 +29,3 @@ hs_err_pid*
 replay_pid*
 .vscode
 .idea
-
