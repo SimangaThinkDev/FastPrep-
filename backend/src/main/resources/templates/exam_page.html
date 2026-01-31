@@ -291,6 +291,44 @@
         }
     }
 
+    // Function to capture user answers and create hidden inputs
+    function captureUserAnswer(questionIndex) {
+        const currentCard = cards[questionIndex];
+        const inputs = currentCard.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+        const selectedAnswers = [];
+        
+        inputs.forEach(input => {
+            if (input.checked) {
+                selectedAnswers.push(input.value);
+            }
+        });
+        
+        userAnswersData[questionIndex] = selectedAnswers;
+        
+        // Create hidden inputs for form submission
+        const questionData = questionsArray[questionIndex];
+        const questionNumber = questionData.question_number;
+        const isMultipleChoice = questionData.is_multiple_choice;
+        
+        // Remove existing hidden inputs for this question
+        const existingInputs = document.querySelectorAll(`input[name^="question_${questionNumber}"]`);
+        existingInputs.forEach(input => {
+            if (input.type === 'hidden') {
+                input.remove();
+            }
+        });
+        
+        // Add new hidden inputs
+        const form = document.getElementById('examForm');
+        selectedAnswers.forEach(answer => {
+            const hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = isMultipleChoice ? `question_${questionNumber}[]` : `question_${questionNumber}`;
+            hiddenInput.value = answer;
+            form.appendChild(hiddenInput);
+        });
+    }
+
     function showAnswerForCurrentQuestion() {
         const currentCard = cards[currentIndex];
         const correctAnswerKeys = currentCard.dataset.correctAnswer;
@@ -343,6 +381,9 @@
             nextBtn.textContent = 'Next Question →';
             nextBtn.onclick = nextQuestion;
         } else {
+            // Capture the final question's answer
+            captureUserAnswer(currentIndex);
+            
             // Compile final JSON and submit
             const finalJson = compileFinalExamJson();
             console.log('Final Exam JSON for Gemini:', JSON.stringify(finalJson, null, 2));
@@ -386,20 +427,26 @@
         }
     };
     
-    // Function to capture user answers
-    function captureUserAnswer(questionIndex) {
-        const currentCard = cards[questionIndex];
-        const inputs = currentCard.querySelectorAll('input[type="radio"], input[type="checkbox"]');
-        const selectedAnswers = [];
+    // Function to handle direct form submission (Submit Exam button)
+    document.getElementById('submitBtn').addEventListener('click', function(e) {
+        e.preventDefault();
         
-        inputs.forEach(input => {
-            if (input.checked) {
-                selectedAnswers.push(input.value);
-            }
-        });
+        // Capture current question's answer
+        captureUserAnswer(currentIndex);
         
-        userAnswersData[questionIndex] = selectedAnswers;
-    }
+        // Compile final JSON and submit
+        const finalJson = compileFinalExamJson();
+        console.log('Final Exam JSON for Gemini:', JSON.stringify(finalJson, null, 2));
+        
+        // Add JSON to form as hidden field for backend processing
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'examResultJson';
+        hiddenInput.value = JSON.stringify(finalJson);
+        document.getElementById('examForm').appendChild(hiddenInput);
+        
+        document.getElementById('examForm').submit();
+    });
     
     // Function to compile final JSON with user answers
     function compileFinalExamJson() {

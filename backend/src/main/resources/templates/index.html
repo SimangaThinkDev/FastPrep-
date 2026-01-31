@@ -2,19 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>FastPrep+ - Home</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Playwrite+NZ+Guides&display=swap" rel="stylesheet">
+    <th:block th:replace="layout :: head"></th:block>
+    <link rel="stylesheet" type="text/css" href="/css/header-auth.css">
 </head>
 
 <body>
+    <!-- Custom header for main page with auth buttons -->
     <header id="main-header">
         <div class="header-content">
-            <span class="logo-text">FastPrep</span>
-            <box-icon name='plus-medical'></box-icon>
+            <div class="logo-section">
+                <span class="logo-text">FastPrep</span>
+                <box-icon name='plus-medical'></box-icon>
+            </div>
+            <!-- Auth buttons only on main page -->
+            <div th:if="${session.userId == null}" class="auth-buttons">
+                <a href="/auth/login" class="auth-btn login-btn">Login</a>
+                <a href="/auth/signup" class="auth-btn signup-btn">Sign Up</a>
+            </div>
+            <!-- User menu for authenticated users -->
+            <div th:if="${session.userId != null}" class="user-menu">
+                <span th:text="${session.userName}" class="user-name"></span>
+                <a href="/dashboard" class="auth-btn">Dashboard</a>
+                <a href="/auth/logout" class="auth-btn">Logout</a>
+            </div>
         </div>
     </header>
 
@@ -36,7 +46,7 @@
     <section class="cta-section">
         <div class="cta-content">
             <p class="cta-text">Are you ready to start taking control of the cloud?</p>
-            <a href="/exams" class="cta-button">Go to exam center</a>
+            <a href="/auth/signup" class="cta-button">Get Started</a>
         </div>
     </section>
 
@@ -120,18 +130,7 @@
         </div>
     </section>
 
-    <footer class="main-footer">
-        <div class="footer-content">
-            <p class="footer-copyright">
-                &copy; 2025 FastPrep+. All rights reserved.
-            </p>
-            <div class="footer-links">
-                <a href="#" class="footer-link">Privacy Policy</a>
-                <span class="link-separator">|</span>
-                <a href="#" class="footer-link">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
+    <th:block th:replace="layout :: footer"></th:block>
 
 </body>
 

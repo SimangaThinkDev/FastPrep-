@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Playwrite+NZ+Guides&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header Fragment - Logo only -->
+    <header th:fragment="header" id="main-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <span class="logo-text">FastPrep</span>
+                <box-icon name='plus-medical'></box-icon>
+            </div>
+            <!-- User menu for authenticated users -->
+            <div th:if="${session.userId != null}" class="user-menu">
+                <span th:text="${session.userName}" class="user-name"></span>
+                <a href="/dashboard" class="auth-btn">Dashboard</a>
+                <a href="/auth/logout" class="auth-btn">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Footer Fragment -->
+    <footer th:fragment="footer" class="main-footer">
+        <div class="footer-content">
+            <p class="footer-copyright">
+                &copy; 2025 FastPrep+. All rights reserved.
+            </p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <span class="link-separator">|</span>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

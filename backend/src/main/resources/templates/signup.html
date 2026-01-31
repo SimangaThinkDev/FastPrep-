@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FastPrep+ - Sign Up</title>
+    <th:block th:replace="layout :: head"></th:block>
+    <link rel="stylesheet" type="text/css" href="/css/auth.css">
+</head>
+
+<body>
+    <th:block th:replace="layout :: header"></th:block>
+
+    <div class="auth-container">
+        <div class="auth-header">
+            <h1>Create Your Account</h1>
+            <p>Start your AWS certification journey today</p>
+        </div>
+
+        <form th:action="@{/auth/signup}" method="post">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required minlength="6">
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required minlength="6">
+            </div>
+
+            <button type="submit" class="auth-button">Create Account</button>
+        </form>
+
+        <div class="auth-link">
+            <p>Already have an account? <a href="/auth/login">Sign in here</a></p>
+        </div>
+    </div>
+    
+    <th:block th:replace="layout :: footer"></th:block>
+</body>
+</html>

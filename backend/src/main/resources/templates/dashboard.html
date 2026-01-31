@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FastPrep+ - Dashboard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="header-content">
+            <a href="/dashboard" style="text-decoration: none; color: inherit;">
+                <span class="logo-text">FastPrep</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div class="user-info">
+                <h1 th:text="'Welcome back, ' + ${userName} + '!'">Welcome back, User!</h1>
+                <p>Ready to continue your AWS certification journey?</p>
+            </div>
+            <a href="/auth/logout" class="logout-btn">Logout</a>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" th:text="${userStats.totalExamsCompleted}">12</div>
+                <div class="stat-label">Exams Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" th:text="${userStats.averageScore} + '%'">78%</div>
+                <div class="stat-label">Average Score</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" th:text="${userStats.totalStudyHours}">45</div>
+                <div class="stat-label">Study Hours</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" th:text="${userStats.certificationsReady}">3</div>
+                <div class="stat-label">Certifications Ready</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Recent Exam History</h2>
+        <div class="exam-history">
+            <div class="exam-history-header">
+                <h3>Your Latest Attempts</h3>
+            </div>
+            <div th:if="${#lists.isEmpty(examHistory)}" class="exam-item">
+                <div class="exam-details">
+                    <h4>No exams completed yet</h4>
+                    <p>Start taking practice exams to see your progress here</p>
+                </div>
+                <div class="exam-score" style="background: #f8f9fa; color: #6c757d;">--</div>
+            </div>
+            <div th:each="attempt : ${examHistory}" class="exam-item">
+                <div class="exam-details">
+                    <h4 th:text="${attempt.examTitle}">Exam Title</h4>
+                    <p th:text="'Completed on ' + ${#temporals.format(attempt.completedAt, 'MMMM dd, yyyy')} + ' • ' + ${attempt.totalQuestions} + ' questions'">Completed date • questions</p>
+                </div>
+                <div class="exam-score" th:classappend="${attempt.percentage >= 70} ? 'score-pass' : 'score-fail'" th:text="${attempt.percentage} + '%'">Score%</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Quick Actions</h2>
+        <div class="quick-actions">
+            <div class="action-card">
+                <h3>Take New Exam</h3>
+                <p>Continue practicing with our comprehensive question bank</p>
+                <a href="/exams" class="action-btn">Browse Exams</a>
+            </div>
+            <div class="action-card">
+                <h3>Review Performance</h3>
+                <p>Analyze your weak areas and track improvement</p>
+                <a href="#" class="action-btn">View Analytics</a>
+            </div>
+            <div class="action-card">
+                <h3>Study Resources</h3>
+                <p>Access additional materials and study guides</p>
+                <a href="#" class="action-btn">Study Materials</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

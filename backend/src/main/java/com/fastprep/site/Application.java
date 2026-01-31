@@ -23,7 +23,7 @@ public class Application implements ApplicationRunner {
     /**
      * This serves a simple a straightforward purpose.
      * Show where the server is currently running.
-     * Also works in production...
+     * Should be removed in production
      */
     @Override
     public void run(ApplicationArguments args) {

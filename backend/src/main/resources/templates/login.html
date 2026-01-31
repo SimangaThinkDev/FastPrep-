@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FastPrep+ - Sign In</title>
+    <th:block th:replace="layout :: head"></th:block>
+    <link rel="stylesheet" type="text/css" href="/css/auth.css">
+</head>
+
+<body>
+    <th:block th:replace="layout :: header"></th:block>
+
+    <div class="auth-container">
+        <div class="auth-header">
+            <h1>Welcome Back</h1>
+            <p>Sign in to continue your certification journey</p>
+        </div>
+
+        <form th:action="@{/auth/login}" method="post">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit" class="auth-button">Sign In</button>
+        </form>
+
+        <div class="auth-link">
+            <p>Don't have an account? <a href="/auth/signup">Create one here</a></p>
+        </div>
+    </div>
+    
+    <th:block th:replace="layout :: footer"></th:block>
+</body>
+</html>
