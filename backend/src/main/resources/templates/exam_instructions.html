@@ -116,26 +116,10 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const confirmRules = document.getElementById('confirmRules');
-            const startExamBtn = document.getElementById('startExamBtn');
-            
-            confirmRules.addEventListener('change', function() {
-                startExamBtn.disabled = !this.checked;
-            });
-            
-            startExamBtn.addEventListener('click', function() {
-                if (confirmRules.checked) {
-                    const showAnswers = document.getElementById('showAnswers').checked;
-                    const examUrl = `/exam/start?examNum=${examId}&showAnswers=${showAnswers}`;
-                    window.location.href = examUrl;
-                }
-            });
-        });
-        
+    <script src="/js/exam-instructions.js"></script>
+    <script th:inline="javascript">
         // Pass exam data to JavaScript
-        const examId = [[${examId}]];
+        window.examId = [[${examId}]];
     </script>
 
 </body>

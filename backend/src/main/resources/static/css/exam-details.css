@@ -1,0 +1,89 @@
+/* Exam Details Page Styles */
+
+/* Pagination Container */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Buttons */
+.pagination-controls button {
+    background-color: rgb(87, 87, 23);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.pagination-controls button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+    background-color: rgb(128, 128, 17);
+}
+
+/* Page Info Text */
+.pagination-controls #page-info {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Exam Card Layout */
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.item-title {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.item-metrics {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+}
+
+.btn.secondary-cta {
+    padding: 8px 16px;
+    font-size: 14px;
+    margin-left: 15px;
+}
+
+.coming-soon-message {
+    text-align: center;
+    padding: 40px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.coming-soon-message i {
+    font-size: 3em;
+    color: #ffa500;
+    margin-bottom: 20px;
+}
+
+.coming-soon-message h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.coming-soon-message p {
+    color: #666;
+    margin-bottom: 10px;
+}

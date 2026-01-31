@@ -5,99 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/details.css">
+    <link rel="stylesheet" type="text/css" href="/css/exam-details.css">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Playwrite+NZ+Guides&display=swap" rel="stylesheet">
-    <style>
-        /* Pagination Container */
-        .pagination-controls {
-            display: flex;
-            justify-content: center; /* Center horizontally */
-            align-items: center;
-            margin-top: 20px;
-            gap: 15px; /* Space between buttons and info */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        /* Buttons */
-        .pagination-controls button {
-            background-color: rgb(87, 87, 23); /* Green button */
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .pagination-controls button:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-        }
-
-        .pagination-controls button:hover:not(:disabled) {
-            background-color: rgb(128, 128, 17);
-        }
-
-        /* Page Info Text */
-        .pagination-controls #page-info {
-            font-weight: bold;
-            font-size: 14px;
-            color: #333;
-        }
-        
-        /* Exam Card Layout */
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .item-title {
-            margin: 0;
-            flex-grow: 1;
-        }
-        
-        .item-metrics {
-            text-align: center;
-            font-size: 14px;
-            color: #666;
-            margin-top: 10px;
-        }
-        
-        .btn.secondary-cta {
-            padding: 8px 16px;
-            font-size: 14px;
-            margin-left: 15px;
-        }
-        
-        .coming-soon-message {
-            text-align: center;
-            padding: 40px;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-        
-        .coming-soon-message i {
-            font-size: 3em;
-            color: #ffa500;
-            margin-bottom: 20px;
-        }
-        
-        .coming-soon-message h3 {
-            color: #333;
-            margin-bottom: 15px;
-        }
-        
-        .coming-soon-message p {
-            color: #666;
-            margin-bottom: 10px;
-        }
-    </style>
 </head>
 
 <body>
@@ -192,47 +104,6 @@
 
 </body>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const exams = Array.from(document.querySelectorAll('#exam-list .exam-item-card'));
-        const pageSize = 5; // show 5 exams at a time
-        let currentPage = 0;
-        const totalPages = Math.ceil(exams.length / pageSize);
-
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const pageInfo = document.getElementById('page-info');
-
-        function showPage(page) {
-            const start = page * pageSize;
-            const end = start + pageSize;
-
-            exams.forEach((exam, index) => {
-                exam.style.display = (index >= start && index < end) ? 'block' : 'none';
-            });
-
-            pageInfo.textContent = `Page ${page + 1} of ${totalPages}`;
-            prevBtn.disabled = page === 0;
-            nextBtn.disabled = page === totalPages - 1;
-        }
-
-        prevBtn.addEventListener('click', () => {
-            if (currentPage > 0) {
-                currentPage--;
-                showPage(currentPage);
-            }
-        });
-
-        nextBtn.addEventListener('click', () => {
-            if (currentPage < totalPages - 1) {
-                currentPage++;
-                showPage(currentPage);
-            }
-        });
-
-        // Initialize
-        showPage(currentPage);
-    });
-</script>
+<script src="/js/exam-details.js"></script>
 
 </html>

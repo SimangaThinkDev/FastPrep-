@@ -26,6 +26,7 @@ public class AwsExamCatalog {
     private static final List<ExamInfo> ALL_EXAMS = Arrays.asList(
         // Foundational
         new ExamInfo("AWS Cloud Practitioner", ExamLevel.FOUNDATIONAL, true),
+        new ExamInfo("AI Practitioner", ExamLevel.FOUNDATIONAL, false),
         
         // Associate
         new ExamInfo("Solutions Architect - Associate", ExamLevel.ASSOCIATE, false),
@@ -33,7 +34,6 @@ public class AwsExamCatalog {
         new ExamInfo("SysOps Administrator - Associate", ExamLevel.ASSOCIATE, false),
         new ExamInfo("Data Engineer - Associate", ExamLevel.ASSOCIATE, false),
         new ExamInfo("Machine Learning Engineer - Associate", ExamLevel.ASSOCIATE, false),
-        new ExamInfo("AI Practitioner", ExamLevel.ASSOCIATE, false),
         
         // Professional
         new ExamInfo("Solutions Architect - Professional", ExamLevel.PROFESSIONAL, false),

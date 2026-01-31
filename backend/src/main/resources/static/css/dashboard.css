@@ -159,3 +159,9 @@
 .action-btn:hover {
     background: var(--bg-color);
 }
+
+/* No score styling */
+.exam-score.no-score {
+    background: #f8f9fa;
+    color: #6c757d;
+}
