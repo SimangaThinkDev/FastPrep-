@@ -7,6 +7,15 @@
     --third-bg-color: rgb(22, 30, 68); /* Deep Navy/Indigo */
     --text-color: #ededed; /* Near White */
     --main-color: #132fa8; /* Primary Accent Blue */
+    --primary-color: #132fa8; /* Primary Blue */
+    --secondary-color: #764ba2; /* Purple */
+    --success-color: #28a745; /* Green */
+    --warning-color: #ffc107; /* Yellow */
+    --danger-color: #dc3545; /* Red */
+    --button-primary: #007bff; /* Bright Blue for buttons */
+    --button-secondary: #6c757d; /* Gray for secondary buttons */
+    --border-color: #dee2e6; /* Light gray for borders */
+    --text-secondary: #6c757d; /* Secondary text color */
 }
 
 * {
@@ -162,11 +171,54 @@ box-icon {
     border-radius: 8px;
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: none;
+    cursor: pointer;
 }
 
 .cta-button:hover {
     background-color: #0d1e78;
     transform: translateY(-2px);
+}
+
+/* Button Variants */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--button-primary) !important;
+    color: white !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #0056b3 !important;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--button-secondary) !important;
+    color: white !important;
+    border: 2px solid var(--button-secondary) !important;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62 !important;
+    border-color: #545b62 !important;
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.9rem;
 }
 
 /* ---------------------------------------------------------------------------- *\

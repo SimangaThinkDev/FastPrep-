@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Study Resources - FastPrep+</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/content-pages.css">
+</head>
+
+<body>
+    <div th:replace="layout :: header"></div>
+    
+    <div class="content-container">
+        <div class="content-header">
+            <h1>📚 Study Resources</h1>
+            <p>Curated materials to help you succeed in AWS certifications</p>
+        </div>
+
+        <!-- Official AWS Resources -->
+        <div class="content-section resources-highlight">
+            <h2>🏛️ Official AWS Resources</h2>
+            <p>Start with these authoritative sources directly from Amazon Web Services:</p>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <h4>AWS Cloud Practitioner Essentials</h4>
+                    <p>Free digital course covering all exam topics with hands-on labs and expert instruction.</p>
+                    <a href="https://aws.amazon.com/training/digital/aws-cloud-practitioner-essentials/" target="_blank" class="btn btn-primary">Access Course</a>
+                </div>
+                <div class="resource-item">
+                    <h4>AWS Well-Architected Framework</h4>
+                    <p>Essential whitepaper for understanding AWS architectural best practices and design principles.</p>
+                    <a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" class="btn btn-primary">Read Whitepaper</a>
+                </div>
+                <div class="resource-item">
+                    <h4>AWS Free Tier</h4>
+                    <p>Get hands-on experience with AWS services at no cost for 12 months.</p>
+                    <a href="https://aws.amazon.com/free/" target="_blank" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Learning -->
+        <div class="content-section">
+            <h2>🎥 Video Learning</h2>
+            <p>Visual learning resources from AWS experts and the community:</p>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <h4>AWS Training and Certification YouTube</h4>
+                    <p>Official AWS training videos, exam tips, and service deep-dives from certified instructors.</p>
+                    <a href="https://www.youtube.com/@AWSTrainingandCertification" target="_blank" class="btn btn-primary">Watch Videos</a>
+                </div>
+                <div class="resource-item">
+                    <h4>AWS re:Invent Sessions</h4>
+                    <p>Deep-dive technical sessions from AWS's annual conference featuring the latest innovations.</p>
+                    <a href="https://reinvent.awsevents.com/" target="_blank" class="btn btn-primary">Browse Sessions</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Documentation -->
+        <div class="content-section">
+            <h2>📖 Documentation & Guides</h2>
+            <p>Comprehensive technical documentation and practical guides:</p>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <h4>AWS Documentation</h4>
+                    <p>Complete service documentation, API references, and step-by-step user guides.</p>
+                    <a href="https://docs.aws.amazon.com/" target="_blank" class="btn btn-primary">Browse Docs</a>
+                </div>
+                <div class="resource-item">
+                    <h4>AWS Architecture Center</h4>
+                    <p>Reference architectures, best practices, and real-world implementation patterns.</p>
+                    <a href="https://aws.amazon.com/architecture/" target="_blank" class="btn btn-primary">Explore Architectures</a>
+                </div>
+                <div class="resource-item">
+                    <h4>AWS Pricing Calculator</h4>
+                    <p>Estimate costs for AWS services and create detailed pricing scenarios for your projects.</p>
+                    <a href="https://calculator.aws/" target="_blank" class="btn btn-primary">Calculate Costs</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Community Resources -->
+        <div class="content-section">
+            <h2>👥 Community & Forums</h2>
+            <p>Connect with fellow AWS learners and certified professionals:</p>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <h4>AWS Community Forums</h4>
+                    <p>Get help from AWS experts, solutions architects, and experienced community members.</p>
+                    <a href="https://forums.aws.amazon.com/" target="_blank" class="btn btn-primary">Join Discussion</a>
+                </div>
+                <div class="resource-item">
+                    <h4>AWS Reddit Community</h4>
+                    <p>Active community of 200k+ members discussing AWS topics, certifications, and career advice.</p>
+                    <a href="https://www.reddit.com/r/aws/" target="_blank" class="btn btn-primary">Visit Reddit</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-actions">
+            <a href="/dashboard" class="btn btn-secondary">← Back to Dashboard</a>
+            <a href="/exams" class="btn btn-primary">Practice Exams</a>
+        </div>
+    </div>
+    
+    <div th:replace="layout :: footer"></div>
+</body>
+</html>

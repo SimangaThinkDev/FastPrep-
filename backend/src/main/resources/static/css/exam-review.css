@@ -1,0 +1,82 @@
+/* Exam Review Page Styles */
+.review-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.review-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.review-header h1 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.review-meta {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.review-meta span {
+    margin: 0 10px;
+}
+
+.review-content {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.review-content h2 {
+    color: var(--primary-color);
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.review-content h3 {
+    color: var(--secondary-color);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.review-content ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.review-content ol {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.review-content li {
+    margin-bottom: 5px;
+}
+
+.review-actions {
+    text-align: center;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Dashboard Review Button */
+.exam-history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.review-available {
+    display: flex;
+    align-items: center;
+}

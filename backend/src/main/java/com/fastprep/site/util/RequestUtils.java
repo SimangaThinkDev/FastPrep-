@@ -39,4 +39,26 @@ public class RequestUtils {
 
         return userAnswers;
     }
+    
+    /**
+     * Extracts user answers as a simple map for AI processing.
+     * 
+     * @param request the HttpServletRequest containing form submission data
+     * @return map where keys are parameter names and values are the selected answers as strings
+     */
+    public static Map<String, Object> extractUserAnswersAsMap(HttpServletRequest request) {
+        Map<String, Object> userAnswers = new HashMap<>();
+
+        request.getParameterMap().forEach((key, values) -> {
+            if (key.startsWith("question_")) {
+                if (values.length == 1) {
+                    userAnswers.put(key, values[0]);
+                } else {
+                    userAnswers.put(key, Arrays.asList(values));
+                }
+            }
+        });
+
+        return userAnswers;
+    }
 }

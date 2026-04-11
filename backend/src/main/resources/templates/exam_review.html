@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Exam Review - FastPrep+</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/exam-review.css">
+</head>
+
+<body>
+    <div th:replace="layout :: header"></div>
+    
+    <section class="review-container">
+        <div class="review-header">
+            <h1>AI-Powered Exam Review</h1>
+            <div class="review-meta">
+                <span>Score: <strong th:text="${review.score}">0</strong></span>
+                <span>•</span>
+                <span th:text="${#temporals.format(review.createdAt, 'MMM dd, yyyy')}">Date</span>
+            </div>
+        </div>
+        
+        <div class="review-content">
+            <div th:utext="${review.aiReview}"></div>
+        </div>
+        
+        <div class="review-actions">
+            <a href="/dashboard" class="btn btn-secondary">Back to Dashboard</a>
+            <a href="/exams" class="btn btn-primary">Take Another Exam</a>
+        </div>
+    </section>
+    
+    <div th:replace="layout :: footer"></div>
+</body>
+</html>

@@ -89,6 +89,14 @@
     background: var(--second-bg-color);
     color: white;
     padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review-available {
+    display: flex;
+    align-items: center;
 }
 
 .exam-item {

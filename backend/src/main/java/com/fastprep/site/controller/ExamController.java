@@ -4,9 +4,12 @@ import com.fastprep.site.model.Exam;
 import com.fastprep.site.model.User;
 import com.fastprep.site.model.AwsExamCatalog;
 import com.fastprep.site.model.ExamLevel;
+import com.fastprep.site.model.ExamReview;
 import com.fastprep.site.service.ExamService;
 import com.fastprep.site.service.GradingService;
 import com.fastprep.site.service.UserService;
+import com.fastprep.site.service.GeminiService;
+import com.fastprep.site.repository.ExamReviewRepository;
 import com.fastprep.site.util.RequestUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -26,11 +29,16 @@ public class ExamController {
     private final ExamService examService;
     private final GradingService gradingService;
     private final UserService userService;
+    private final GeminiService geminiService;
+    private final ExamReviewRepository examReviewRepository;
 
-    public ExamController(ExamService examService, GradingService gradingService, UserService userService) {
+    public ExamController(ExamService examService, GradingService gradingService, UserService userService, 
+                         GeminiService geminiService, ExamReviewRepository examReviewRepository) {
         this.examService = examService;
         this.gradingService = gradingService;
         this.userService = userService;
+        this.geminiService = geminiService;
+        this.examReviewRepository = examReviewRepository;
     }
 
     @GetMapping("/")
@@ -46,13 +54,21 @@ public class ExamController {
     public String dashboard(HttpSession session, Model model) {
         String userName = (String) session.getAttribute("userName");
         String userEmail = (String) session.getAttribute("userEmail");
+        String userId = (String) session.getAttribute("userId");
         
         // Get actual user data from database
         User user = userService.getOrCreateUser(userEmail, userName);
         
+        // Get recent exam review if available
+        ExamReview recentReview = null;
+        if (userId != null) {
+            recentReview = examReviewRepository.findFirstByUserIdOrderByCreatedAtDesc(userId).orElse(null);
+        }
+        
         model.addAttribute("userName", userName != null ? userName : "User");
         model.addAttribute("userStats", user.getStats());
         model.addAttribute("examHistory", user.getExamHistory());
+        model.addAttribute("recentReview", recentReview);
         
         return "dashboard";
     }
@@ -181,7 +197,7 @@ public class ExamController {
     }
 
     /**
-     * Grade a submitted exam.
+     * Grade a submitted exam and generate AI review.
      */
     @PostMapping("/exam/submit")
     public String submitExam(@RequestParam("examID") int examID,
@@ -199,12 +215,86 @@ public class ExamController {
         
         // Record exam attempt for logged-in user
         String userId = (String) session.getAttribute("userId");
+        System.out.println("DEBUG: userId from session: " + userId);
+        
         if (userId != null) {
             userService.addExamAttempt(userId, examID, exam.getMetadata().getTitle(), 
-                                     score, exam.getQuestions().size(), 180); // 180 minutes default
+                                     score, exam.getQuestions().size(), 180);
+            
+            // Generate AI review
+            System.out.println("DEBUG: Generating AI review for user: " + userId);
+            String aiReview = geminiService.generateExamReview(
+                exam.getMetadata().getTitle(),
+                exam.getQuestions(),
+                RequestUtils.extractUserAnswersAsMap(request),
+                score,
+                exam.getQuestions().size()
+            );
+            
+            // Save review to database
+            ExamReview review = new ExamReview(userId, String.valueOf(examID), score, aiReview);
+            ExamReview savedReview = examReviewRepository.save(review);
+            System.out.println("DEBUG: Saved review with ID: " + savedReview.getId());
+        } else {
+            System.out.println("DEBUG: No userId in session - review not saved");
         }
 
         model.addAttribute("score", score);
-        return "exam_result";
+        model.addAttribute("totalQuestions", exam.getQuestions().size());
+        return "exam_result_simple";
+    }
+    
+    @GetMapping("/exam/review/{reviewId}")
+    public String viewExamReview(@PathVariable String reviewId, HttpSession session, Model model) {
+        String userId = (String) session.getAttribute("userId");
+        if (userId == null) {
+            return "redirect:/auth/login";
+        }
+        
+        ExamReview review = examReviewRepository.findById(reviewId).orElse(null);
+        if (review == null || !review.getUserId().equals(userId)) {
+            throw new RuntimeException("Review not found");
+        }
+        
+        model.addAttribute("review", review);
+        return "exam_review";
+    }
+    
+    @GetMapping("/analytics")
+    public String viewAnalytics(HttpSession session, Model model) {
+        String userId = (String) session.getAttribute("userId");
+        if (userId == null) {
+            return "redirect:/auth/login";
+        }
+        
+        // Get all exam reviews for the user
+        List<ExamReview> allReviews = examReviewRepository.findByUserIdOrderByCreatedAtDesc(userId);
+        
+        // Get user exam history for score trends
+        User user = userService.getOrCreateUser(
+            (String) session.getAttribute("userEmail"),
+            (String) session.getAttribute("userName")
+        );
+        
+        model.addAttribute("allReviews", allReviews);
+        model.addAttribute("examHistory", user.getExamHistory());
+        model.addAttribute("userName", session.getAttribute("userName"));
+        
+        return "analytics";
+    }
+    
+    @GetMapping("/resources")
+    public String studyResources(Model model) {
+        return "resources";
+    }
+    
+    @GetMapping("/privacy")
+    public String privacyPolicy(Model model) {
+        return "privacy";
+    }
+    
+    @GetMapping("/terms")
+    public String termsOfService(Model model) {
+        return "terms";
     }
 }

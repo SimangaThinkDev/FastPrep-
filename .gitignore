@@ -9,6 +9,9 @@
 # Amazon Q rules
 .amazonq/
 
+# Configuration files with sensitive data
+backend/src/main/resources/application.properties
+
 # BlueJ files
 *.ctxt
 

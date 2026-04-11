@@ -91,18 +91,141 @@
 
 </body>
 
-<script src="/js/exam-page.js"></script>
-<script th:inline="javascript">
-    // Initialize exam with Thymeleaf data
-    const showAnswers = [[${showAnswers}]];
-    const questionsArray = [[${questionsArray}]];
-    const examID = [[${examID}]];
-    const title = [[${title}]];
+<script>
+// Does not work when I use it as reference smh
+let currentIndex = 0;
+let cards, nextBtn, submitBtn, currentQSpan;
+let examTimer;
+let examStartTime = Date.now();
+let examDuration = 180 * 60 * 1000;
+let warningCount = 0;
+
+document.addEventListener('DOMContentLoaded', function() {
+    cards = document.querySelectorAll('.question-card');
+    nextBtn = document.getElementById('nextBtn');
+    submitBtn = document.getElementById('submitBtn');
+    currentQSpan = document.getElementById('currentQ');
     
-    // Initialize exam when page loads
-    document.addEventListener('DOMContentLoaded', function() {
-        initializeExam(showAnswers, questionsArray, examID, title);
+    if (cards.length > 0) {
+        showQuestion(0);
+        startTimer();
+        setupEventListeners();
+    }
+});
+
+function showQuestion(index) {
+    cards.forEach((card, i) => {
+        card.style.display = i === index ? 'block' : 'none';
     });
+    
+    if (currentQSpan) {
+        currentQSpan.textContent = index + 1;
+    }
+    
+    if (index === cards.length - 1) {
+        nextBtn.style.display = 'none';
+        submitBtn.style.display = 'inline-block';
+    } else {
+        nextBtn.style.display = 'inline-block';
+        submitBtn.style.display = 'none';
+    }
+    
+    currentIndex = index;
+}
+
+function nextQuestion() {
+    const currentCard = cards[currentIndex];
+    const inputs = currentCard.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+    const anyChecked = Array.from(inputs).some(inp => inp.checked);
+    
+    if (!anyChecked) {
+        alert("Please select at least one option before proceeding.");
+        return;
+    }
+    
+    if (currentIndex < cards.length - 1) {
+        showQuestion(currentIndex + 1);
+    }
+}
+
+function startTimer() {
+    examTimer = setInterval(function() {
+        const elapsed = Date.now() - examStartTime;
+        const remaining = examDuration - elapsed;
+        
+        if (remaining <= 0) {
+            clearInterval(examTimer);
+            alert('Time is up!');
+            document.getElementById('examForm').submit();
+            return;
+        }
+        
+        const hours = Math.floor(remaining / (1000 * 60 * 60));
+        const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+        
+        const timeElement = document.getElementById('timeRemaining');
+        if (timeElement) {
+            timeElement.textContent = 
+                String(hours).padStart(2, '0') + ':' + 
+                String(minutes).padStart(2, '0') + ':' + 
+                String(seconds).padStart(2, '0');
+        }
+    }, 1000);
+}
+
+function setupEventListeners() {
+    // Tab switching detection
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            warningCount++;
+            showWarning(`Warning ${warningCount}: You switched tabs or minimized the window.`);
+        }
+    });
+    
+    // Prevent right-click
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+    
+    // Prevent text selection
+    document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+    });
+    
+    // Prevent copy/paste shortcuts
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'a')) {
+            e.preventDefault();
+        }
+    });
+}
+
+function showWarning(message) {
+    const warningModal = document.getElementById('warningModal');
+    const warningMessage = document.getElementById('warningMessage');
+    
+    if (warningMessage) {
+        warningMessage.textContent = message;
+    }
+    if (warningModal) {
+        warningModal.style.display = 'flex';
+    }
+    
+    if (warningCount >= 3) {
+        setTimeout(function() {
+            alert('You have received 3 warnings. The exam will be submitted automatically.');
+            document.getElementById('examForm').submit();
+        }, 2000);
+    }
+}
+
+function closeWarning() {
+    const warningModal = document.getElementById('warningModal');
+    if (warningModal) {
+        warningModal.style.display = 'none';
+    }
+}
 </script>
 
 </html>

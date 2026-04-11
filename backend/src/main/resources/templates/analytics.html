@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Analytics - FastPrep+</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="/css/analytics.css">
+</head>
+
+<body>
+    <div th:replace="layout :: header"></div>
+    
+    <div class="analytics-container">
+        <div class="analytics-header">
+            <h1 th:text="'Performance Analytics - ' + ${userName}">Performance Analytics</h1>
+            <p>Track your progress and review detailed AI-powered feedback</p>
+        </div>
+
+        <!-- Score History Section -->
+        <div class="section-card">
+            <h2>📊 Score History</h2>
+            <div class="score-history">
+                <div th:if="${#lists.isEmpty(examHistory)}" class="no-data">
+                    <p>No exam attempts yet. Take your first practice exam to see your progress here!</p>
+                </div>
+                <div th:each="attempt : ${examHistory}" class="score-item">
+                    <div class="score-details">
+                        <h4 th:text="${attempt.examTitle}">Exam Title</h4>
+                        <p th:text="'Completed on ' + ${#temporals.format(attempt.completedAt, 'MMMM dd, yyyy HH:mm')}">Date</p>
+                    </div>
+                    <div class="score-badge" th:classappend="${attempt.percentage >= 70} ? 'score-pass' : 'score-fail'">
+                        <span th:text="${attempt.score} + '/' + ${attempt.totalQuestions}">Score</span>
+                        <small th:text="${attempt.percentage} + '%'">Percentage</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Reviews Section -->
+        <div class="section-card">
+            <h2>🤖 AI-Powered Reviews</h2>
+            <div class="reviews-list">
+                <div th:if="${#lists.isEmpty(allReviews)}" class="no-data">
+                    <p>No AI reviews available yet. Complete an exam to get personalized feedback!</p>
+                </div>
+                <div th:each="review : ${allReviews}" class="review-item">
+                    <div class="review-header">
+                        <h4>Exam Review</h4>
+                        <div class="review-meta">
+                            <span class="review-score" th:text="'Score: ' + ${review.score}">Score</span>
+                            <span class="review-date" th:text="${#temporals.format(review.createdAt, 'MMM dd, yyyy')}">Date</span>
+                        </div>
+                    </div>
+                    <div class="review-preview" th:utext="${#strings.abbreviate(review.aiReview, 200)}">
+                        Review preview...
+                    </div>
+                    <div class="review-actions">
+                        <a th:href="@{'/exam/review/' + ${review.id}}" class="btn btn-sm btn-primary">Read Full Review</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="stats-summary">
+            <div class="stat-item">
+                <div class="stat-number" th:text="${#lists.size(examHistory)}">0</div>
+                <div class="stat-label">Total Exams</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" th:text="${#lists.size(allReviews)}">0</div>
+                <div class="stat-label">AI Reviews</div>
+            </div>
+            <div class="stat-item" th:if="${!#lists.isEmpty(examHistory)}">
+                <div class="stat-number" th:text="${examHistory[0].percentage} + '%'">0%</div>
+                <div class="stat-label">Latest Score</div>
+            </div>
+        </div>
+
+        <div class="analytics-actions">
+            <a href="/dashboard" class="btn btn-secondary">← Back to Dashboard</a>
+            <a href="/exams" class="btn btn-primary">Take Another Exam</a>
+        </div>
+    </div>
+    
+    <div th:replace="layout :: footer"></div>
+</body>
+</html>

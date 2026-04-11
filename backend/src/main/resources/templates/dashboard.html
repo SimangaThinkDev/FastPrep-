@@ -42,6 +42,9 @@
         <div class="exam-history">
             <div class="exam-history-header">
                 <h3>Your Latest Attempts</h3>
+                <div th:if="${recentReview != null}" class="review-available">
+                    <a th:href="@{'/exam/review/' + ${recentReview.id}}" class="btn btn-primary btn-sm">See Latest Review</a>
+                </div>
             </div>
             <div th:if="${#lists.isEmpty(examHistory)}" class="exam-item">
                 <div class="exam-details">
@@ -69,12 +72,12 @@
             <div class="action-card">
                 <h3>Review Performance</h3>
                 <p>Analyze your weak areas and track improvement</p>
-                <a href="#" class="action-btn">View Analytics</a>
+                <a href="/analytics" class="action-btn">View Analytics</a>
             </div>
             <div class="action-card">
                 <h3>Study Resources</h3>
                 <p>Access additional materials and study guides</p>
-                <a href="#" class="action-btn">Study Materials</a>
+                <a href="/resources" class="action-btn">Study Materials</a>
             </div>
         </div>
     </div>
